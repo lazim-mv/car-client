@@ -1,0 +1,262 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: var(--padding-100) var(--padding-horizontal) 0 var(--padding-horizontal);
+}
+
+.row1 {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    color: var(--text-dark-color);
+}
+
+.tabs {
+    font-size: var(--font-16);
+    padding-top: var(--padding-36);
+    display: flex;
+    gap: 1.65vw;
+    width: 100%;
+    margin-bottom: 0.99vw;
+    padding-bottom: 1.26vw;
+    border-bottom: var(--1px) solid var(--border-color);
+}
+
+.tab {
+    cursor: pointer;
+    padding: 0.53vw var(--16px);
+    border-radius: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.tab.active {
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+.row2 {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--30px);
+    width: 100%;
+    padding-top: var(--padding-36);
+}
+
+.carCard {
+    width: calc(50% - var(--30px));
+    width: 48.7%;
+    display: flex;
+
+    position: relative;
+    border-radius: var(--14px);
+    overflow: hidden;
+    background: white;
+    box-shadow: 0 var(--4px) var(--6px) rgba(0, 0, 0, 0.1);
+}
+
+.imageContainer {
+    position: relative;
+    width: 40%;
+    height: 15.41vw;
+    overflow: hidden;
+}
+
+.imageContainer img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: all 0.3s ease;
+}
+
+.imageTopTags {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+    gap: 0.53vw;
+    padding: 0.53vw;
+}
+
+.tag {
+    background: var(--secondary-color);
+    color: var(--text-light-color);
+    border-radius: var(--14px);
+    padding: var(--5px) var(--12px);
+    font-size: var(--12px);
+}
+
+.hoverIcons {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    gap: 0.53vw;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.carCard:hover .hoverIcons {
+    opacity: 1;
+}
+
+.carCard:hover .imageContainer img {
+    transform: scale(1.1);
+    filter: brightness(.4);
+    transition: all 0.3s ease;
+}
+
+.iconButton {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.iconButton:hover {
+    background: var(--primary-color);
+    color: white;
+}
+
+.carInfo {
+    padding: 1.06vw;
+    width: 60%;
+    height: max-content;
+}
+
+.category {
+    color: var(--secondary-color);
+    margin-bottom: var(--4px);
+}
+
+.carName {
+    margin-bottom: 0.5rem;
+}
+
+.carSpecs {
+    display: flex;
+    gap: var(--10px);
+    margin-bottom: 1.26vw;
+
+}
+
+.carSpecs span {
+    display: flex;
+    align-items: center;
+    gap: var(--4px);
+}
+
+.specIcon {
+    width: var(--12px);
+}
+
+
+.carPrice {
+    color: var(--primary-color);
+    padding-bottom: var(--20px);
+    border-bottom: var(--1px) solid var(--border-color);
+}
+
+.bottom {
+    display: flex;
+    /* justify-content: space-between; */
+    align-items: center;
+    gap: var(--10px);
+}
+
+.imageGallery {
+    display: flex;
+    align-items: center;
+    margin-top: var(--10px);
+    gap: var(--4px);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    font-size: var(--font-16);
+}
+
+.icon {
+    height: 1.5vw;
+    width: 1.5vw;
+}
+
+.imageGallery:hover {
+    color: var(--secondary-color);
+    transition: all 0.3s ease;
+}
+
+.viewCarButton {
+    margin-top: var(--10px);
+    width: max-content;
+}
+
+@media only screen and (max-width: 767px) {
+    .container {
+        padding: var(--padding-60) var(--padding-horizontal) 0;
+    }
+
+    .row1{
+        margin-bottom: var(--20px);
+        align-items: center;
+        justify-content: center;
+    }
+
+    .tabs {
+        overflow-x: scroll;
+        padding-top: 0;
+        padding-bottom: var(--10px);
+        margin-bottom: var(--20px);
+    }
+
+    .tab {
+        white-space: nowrap;
+        padding: 1vw var(--16px);
+    }
+
+    .row2 {
+        padding-top: 0;
+        gap: var(--10px);
+    }
+
+    .carCard {
+        flex-direction: column;
+        width: 44vw;
+    }
+
+    .imageContainer {
+        width: 44vw;
+        height: 33vw;
+    }
+
+    .carInfo {
+        width: 100%;
+        padding: var(--10px);
+    }
+
+    .carName {
+        font-size: var(--font-20);
+        /* min-height: 13.33vw; */
+    }
+
+    .carSpecs{
+        flex-wrap: wrap;
+        justify-content: flex-start;
+    }
+
+    .icon{
+        width: var(--14px);
+        height: var(--14px);
+    }
+
+    .mobileButton{
+        margin-top: var(--20px);
+    }
+}

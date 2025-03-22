@@ -1,0 +1,120 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: var(--padding-100) var(--padding-horizontal) 0 var(--padding-horizontal);
+}
+
+.row1 {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    color: var(--text-dark-color);
+}
+
+.row2 {
+    padding-top: var(--padding-36);
+    width: 100%;
+    display: flex;
+    gap: var(--30px);
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 var(--4px) var(--6px) rgba(0, 0, 0, 0.1);
+    border-radius: var(--14px);
+    padding-bottom: 0.86vw;
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 var(--8px) var(--12px) rgba(0, 0, 0, 0.15);
+}
+
+.imageContainer {
+    width: 12.43vw;
+    height: 7.08vw;
+    background-color: #FF71010F;
+    padding: 0.86vw 1.32vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--14px);
+    transition: background-color 0.3s ease;
+}
+
+.card:hover .imageContainer {
+    background-color: rgba(255, 113, 1, 0.15);
+}
+
+.card:hover .cardContent h4 {
+    color: var(--primary-color);
+}
+
+.imageContainer img {
+    width: 9.79vw;
+    height: 3.84vw;
+}
+
+.cardContent {
+    margin-top: var(--20px);
+    text-align: center;
+    color: var(--text-dark-color);
+    text-transform: capitalize;
+}
+
+.cardContent h4 {
+    font-size: var(--font-16);
+}
+
+@media only screen and (max-width: 767px) {
+    .container {
+        padding: var(--padding-60) var(--padding-horizontal) 0 var(--padding-horizontal);
+    }
+
+
+    .row1 h2 {
+        text-align: center;
+        width: 100%;
+    }
+
+    .buttonContainer {
+        display: none;
+    }
+
+    .row2 {
+        padding-top: var(--20px);
+    }
+
+    .row2 {
+        width: 100%;
+        overflow-x: scroll;
+        overflow-y: hidden;
+        /* flex-wrap: wrap; */
+        gap: var(--20px);
+        height: 43.73vw;
+        padding-bottom: var(--10px);
+    }
+
+    .card {
+        width: 43vw;
+        height: var(--100px);
+        height: max-content;
+    }
+
+    .imageContainer {
+        width: 43vw;
+        height: max-content;
+        padding: var(--14px) var(--20px);
+    }
+
+    .imageContainer img {
+        width: 32.80vw;
+        height: auto;
+    }
+}

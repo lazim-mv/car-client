@@ -1,0 +1,180 @@
+.container {
+    /* background: linear-gradient(to bottom, #ffffff, #ffe6cc);
+    padding: var(--padding-100) var(--padding-horizontal) ;
+    margin: 0 0 var(--padding-100) 0;
+    background: linear-gradient(to bottom, #ffffff 30%, #ffe6cc 70%, #ffffff 100%); */
+    padding: var(--padding-100) var(--padding-horizontal) 0;
+  }
+  
+  .tittle {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: var(--20px);
+    border-bottom: var(--1px) solid var(--border-color);
+  }
+  
+  .topSection {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .topSection p {
+    margin-top: var(--8px);
+    width: 60%;
+  }
+  
+  .chatButton {
+    width: max-content;
+  }
+  
+  .cards {
+    display: flex;
+    flex-direction: column;
+    margin-top: var(--70px);
+    gap: var(--20px);
+    position: relative;
+  }
+  
+  .card {
+    display: flex;
+    background-color: var(--primary-light-color);
+    flex-direction: column;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 var(--4px) var(--6px) rgba(0, 0, 0, 0.1);
+    width: 55vw;
+    border-radius: var(--14px);
+    padding: 1.6534391534391533vw 1.984126984126984vw 1.984126984126984vw 1.984126984126984vw;
+  }
+  
+  .cardHeading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .descContainer {
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+  
+  .desc {
+    width: 80%;
+  }
+  
+  .visible {
+    max-height: 200px;
+    margin-top: var(--20px);
+    transition: all 0.5s ease;
+  }
+  
+  .arrow {
+    height: 1.6494708994708995vw;
+    width: 1.6494708994708995vw;
+    z-index: 0;
+  }
+  
+  .serviceImgContainer {
+    position: absolute;
+    width: 27.18253968253968vw;
+    height: 100%;
+    border-radius: var(--14px);
+    box-shadow: 0 var(--4px) var(--6px) rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    right: 0;
+    top: 0;
+    transition: all 0.4s ease;
+  }
+  
+  .serviceImg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  @media only screen and (max-width: 767px) {
+    .container {
+      padding: var(--padding-60) var(--padding-horizontal) 0;
+      margin-top: var(--mobileContainerMarginTop);
+    }
+  
+    .tittle {
+      height: auto;
+    }
+  
+    .topSection {
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+    }
+  
+    .topSection h2 {
+      text-align: center;
+    }
+  
+    .container1 {
+      flex-direction: column;
+    }
+  
+    .cards {
+      flex-direction: column;
+      order: 1;
+      margin-top: var(--24px);
+      gap: var(--20px);
+    }
+  
+    .card {
+      width: auto;
+      padding: 4vw;
+      /* height: 14.666666666666666vw; */
+      transition: all 0.6s ease;
+      cursor: default;
+    }
+  
+    .cardHeading h3 {
+      font-size: var(--font-18);
+    }
+  
+    .arrow {
+      height: 4.266666666666667vw;
+      width: 5vw;
+    }
+  
+    .descContainer {
+      transition: all 0.6s ease;
+    }
+  
+    .visible {
+      max-height: 40.666666666666664vw;
+      margin-top: 2.666666666666667vw;
+      transition: all 0.6s ease;
+    }
+  
+    .card p {
+      /* font-size: var(--mfont12);
+      line-height: var(--mlineHeight12);
+      letter-spacing: var(--mletterSpace12); */
+      width: 79.2vw !important;
+    }
+  
+    .serviceImgContainer {
+      width: 79.2vw;
+      height: 86.74400000000001vw;
+      margin-top: 4vw;
+      position: relative;
+    }
+  
+    .serviceImg {
+      width: 100%;
+      height: 100%;
+    }
+  
+    .chatButton {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      margin-top: var(--20px);
+    }
+  }

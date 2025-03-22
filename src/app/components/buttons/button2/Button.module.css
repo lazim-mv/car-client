@@ -1,0 +1,40 @@
+.container {
+    padding: 0.66vw 1.59vw;
+    display: flex;
+    align-items: center;
+    gap: .5vw;
+    border-radius: var(--14px);
+    border: var(--1px) solid var(--border-color);
+    transition: all .3s ease;
+    color: var(--text-dark-color);
+    cursor: pointer;
+    font-size: var(--font-16);
+    font-weight: 600;
+    box-shadow: 0 var(--4px) var(--6px) rgba(0, 0, 0, 0.1);
+    white-space: nowrap;
+}
+
+.container:hover {
+    background-color: var(--secondary-color);
+    color: var(--text-light-color);
+    transition: all .3s ease;
+}
+
+.icon{
+    width: var(--24px);
+    height: var(--24px);
+}
+
+@media only screen and (max-width: 767px) {
+    .container {
+        padding: var(--10px) var(--24px);
+        gap: 1vw;
+        white-space: nowrap;
+    }
+
+    .icon{
+        width: var(--20px);
+        height: var(--20px);
+    }
+    
+}

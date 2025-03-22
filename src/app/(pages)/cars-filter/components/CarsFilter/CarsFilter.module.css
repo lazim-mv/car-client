@@ -1,0 +1,88 @@
+.container {
+    width: 100%;
+    padding: var(--padding-36) var(--padding-horizontal);
+}
+
+.filterBar {
+    display: flex;
+    align-items: center;
+    gap: 1vw;
+    background: var(--primary-light-color);
+    padding: var(--22px);
+    border-radius: var(--16px);
+}
+
+.selectGroup {
+    display: flex;
+    flex: 1;
+    gap: 1vw;
+}
+
+.selectWrapper {
+    position: relative;
+    flex: 1;
+}
+
+.select, .input {
+    width: 100%;
+    background: var(--white);
+    padding: 0.93vw 0.99vw;
+    border-radius: var(--14px);
+    color: var(--text-dark-color);
+    cursor: pointer;
+    font-size: var(--font-14);
+    border: var(--1px) solid var(--select-border-color);
+}
+
+.input {
+    padding-right: 0.99vw;
+}
+
+.select {
+    appearance: none;
+    padding-right: 2.5vw;
+}
+
+.select:focus, .input:focus {
+    outline: none;
+    border-color: var(--secondary-color);
+}
+
+.selectIcon {
+    position: absolute;
+    right: 1vw;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1vw;
+    height: 1vw;
+    pointer-events: none;
+    transition: transform 0.3s ease;
+    color: var(--text-dark-color);
+}
+
+.selectWrapper:focus-within .selectIcon {
+    transform: translateY(-50%) rotate(180deg);
+    color: var(--secondary-color);
+}
+
+.searchButton {
+    background: var(--secondary-color);
+    color: var(--text-light-color);
+    padding: 0.93vw 1.65vw;
+    border-radius: var(--14px);
+    border: none;
+    cursor: pointer;
+    font-size: var(--font-16);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: .5vw;
+}
+
+.searchButton:hover {
+    background: var(--third-color);
+}
+
+.searchIcon {
+    width: var(--14px);
+}

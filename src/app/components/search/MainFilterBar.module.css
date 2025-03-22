@@ -1,0 +1,182 @@
+.searchContainer {
+    width: 100%;
+    /* padding: 0 var(--padding-horizontal); */
+    margin-top: 2vw;
+}
+
+.searchBar {
+    display: flex;
+    align-items: center;
+    gap: 1vw;
+    background: var(--primary-light-color);
+    padding: var(--22px);
+    border-radius: var(--16px);
+}
+
+.selectGroup {
+    display: flex;
+    flex: 1;
+    gap: 1vw;
+}
+
+.selectWrapper {
+    position: relative;
+    flex: 1;
+}
+
+.select {
+    width: 100%;
+    background: var(--white);
+    padding: 0.93vw 0.99vw;
+    border-radius: var(--14px);
+    color: var(--text-dark-color);
+    cursor: pointer;
+    font-size: var(--font-14);
+    border: var(--1px) solid var(--select-border-color);
+    appearance: none;
+    padding-right: 2.5vw;
+    transition: border-color 0.3s ease;
+}
+
+.select:focus {
+    outline: none;
+    border-color: var(--secondary-color);
+}
+
+/* Style for the option elements */
+.select option {
+    padding: 0.8vw;
+    background: var(--white);
+    color: var(--text-dark-color);
+    border: var(--1px) solid var(--select-border-color);
+    cursor: pointer;
+}
+
+.select option:hover,
+.select option:focus,
+.select option:checked {
+    background-color: var(--secondary-color);
+    color: var(--text-light-color);
+}
+
+.selectIcon {
+    position: absolute;
+    right: 1vw;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1vw;
+    height: 1vw;
+    pointer-events: none;
+    transition: transform 0.3s ease;
+    color: var(--text-dark-color);
+}
+
+.selectWrapper:focus-within .selectIcon {
+    transform: translateY(-50%) rotate(180deg);
+    color: var(--secondary-color);
+}
+
+.findButton {
+    background: var(--secondary-color);
+    color: var(--text-light-color);
+    padding: 0.93vw 1.65vw;
+    border-radius: var(--14px);
+    border: none;
+    cursor: pointer;
+    font-size: var(--font-16);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: .5vw;
+    cursor: pointer;
+}
+
+.findButton:hover {
+    background: var(--third-color);
+}
+
+.searchIcon {
+    width: var(--14px);
+}
+
+.vehicleTypes {
+    display: flex;
+    margin-top: 2vw;
+    gap: 1vw;
+}
+
+.vehicleType {
+    display: flex;
+    align-items: center;
+    gap: 0.5vw;
+    padding: 0.8vw 1.2vw;
+    background: var(--primary-light-color);
+    border-radius: var(--14px);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.vehicleType:hover {
+    background: var(--secondary-color);
+    color: var(--text-light-color);
+}
+
+@media (max-width: 768px) {
+    .searchBar {
+        flex-direction: column;
+        gap: 2vw;
+        padding: 4vw;
+    }
+
+    .selectGroup {
+        flex-direction: column;
+        width: 100%;
+        gap: 2vw;
+    }
+
+    .select {
+        padding: 3vw;
+        font-size: 16px;
+    }
+
+    .selectIcon {
+        width: 20px;
+        height: 20px;
+        right: 3vw;
+    }
+
+    .findButton {
+        width: 100%;
+        padding: 3vw;
+        justify-content: center;
+        font-size: 16px;
+    }
+
+    .searchIcon {
+        width: 20px;
+    }
+
+    .vehicleTypes {
+        display: none;
+    }
+}
+
+.vehicleType span {
+    color: var(--text-desc-color);
+    transition: all 0.3s ease;
+}
+
+.vehicleType:hover span {
+    color: var(--text-light-color);
+    transition: all 0.3s ease;
+}
+
+.vehicleType:hover {
+    color: var(--text-light-color);
+    transition: all 0.3s ease;
+}
+
+.vehicleType svg {
+    width: 1.2vw;
+    height: 1.2vw;
+}

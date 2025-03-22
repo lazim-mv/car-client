@@ -1,0 +1,159 @@
+.aboutContainer {
+    padding: var(--padding-100) var(--padding-horizontal);
+}
+
+.missionContainer {
+    display: flex;
+    gap: var(--padding-36);
+    align-items: center;
+}
+
+.missionContent {
+    flex: 1;
+}
+
+.missionContent h2 {
+    margin-bottom: var(--20px);
+}
+
+.missionContent p {}
+
+.missionStats {
+    margin-top: var(--30px);
+    display: flex;
+    gap: var(--padding-36);
+}
+
+.statItem {
+    text-align: center;
+}
+
+.statItem h3 {
+    color: var(--secondary-color);
+    margin-bottom: var(--8px);
+}
+
+.missionImage {
+    flex: 1;
+}
+
+.image {
+    width: 100%;
+    height: 30.682539682539684vw;
+    object-fit: cover;
+    border-radius: var(--16px);
+}
+
+.servicesContainer {
+    margin-top: var(--padding-100);
+    text-align: center;
+}
+
+.servicesDescription {
+    margin: var(--20px) auto var(--padding-36);
+    max-width: 600px;
+}
+
+.servicesGrid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--20px);
+}
+
+.serviceCard {
+    background: var(--primary-light-color);
+    padding: var(--30px);
+    border-radius: var(--16px);
+    transition: all 0.3s ease;
+    border: var(--1px) solid var(--border-color);
+}
+
+.serviceCard:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.serviceIcon {
+    font-size: var(--font-30);
+    color: var(--secondary-color);
+    margin-bottom: var(--16px);
+}
+
+.serviceCard h4 {
+    margin-bottom: var(--12px);
+}
+
+.experienceContainer {
+    margin-top: var(--padding-100);
+    display: flex;
+    gap: var(--padding-36);
+    align-items: center;
+}
+
+.experienceImage {
+    flex: 1;
+}
+
+.experienceContent {
+    flex: 1;
+}
+
+.experienceContent h2 {
+    margin-bottom: var(--20px);
+}
+
+.experienceContent>p {
+    margin-bottom: var(--30px);
+}
+
+.experienceFeatures {
+    display: flex;
+    flex-direction: column;
+    gap: var(--20px);
+}
+
+.featureItem h4 {
+    margin-bottom: var(--8px);
+    color: var(--text-dark-color);
+}
+
+@media (max-width: 768px) {
+
+    .aboutContainer {
+        overflow-x: hidden;
+    }
+
+    .missionContainer {
+        margin-top: 20vw;
+    }
+
+    .missionContainer,
+    .experienceContainer {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .missionStats {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .servicesGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .experienceFeatures {
+        align-items: center;
+        text-align: center;
+    }
+
+    .missionImage,
+    .experienceImage {
+        order: -1;
+    }
+
+    .image {
+        width: calc(100vw - 8vw);
+        height: 87.6vw;
+    }
+}

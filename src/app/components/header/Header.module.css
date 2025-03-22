@@ -1,0 +1,129 @@
+.desktopHeader {
+    width: 100vw;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    z-index: 1;
+    height: 6.41vw;
+    padding: 0 var(--padding-horizontal);
+    background: var(--primary-light-color);
+    /* background: rgba(255, 255, 255, .1); */
+    border-bottom: var(--1px) solid var(--primary-light-color);
+}
+
+.logoContainer {
+    width: 14.88vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 6vw;
+}
+
+.logoContainer img {
+    width: 100%;
+}
+
+.lists {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2vw;
+}
+
+.lists li {
+    text-decoration: none;
+    list-style: none;
+    color: var(--text-dark-color);
+    display: flex;
+    align-items: flex-end;
+    transition: all 0.4s ease;
+    cursor: pointer;
+}
+
+.icons {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2vw;
+}
+
+.icon {
+    width: var(--icon-size);
+    height: var(--icon-size);
+    color: var(--icon-dark);
+    cursor: pointer;
+}
+
+.lists li:hover {
+    color: var(--secondary-color);
+    transition: all 0.4s ease;
+}
+
+.buyCarMenu {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 0.5vw;
+}
+
+.dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: var(--primary-light-color);
+    border: var(--1px) solid var(--primary-light-color);
+    border-radius: 8px;
+    padding: 1vw;
+    min-width: 200px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 9999;
+}
+
+.dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.dropdown ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.dropdown ul li {
+    padding: 0.8vw 0;
+    border-bottom: var(--1px) solid rgba(0, 0, 0, 0.1);
+}
+
+.dropdown ul li:last-child {
+    border-bottom: none;
+}
+
+.dropdown ul li a {
+    color: var(--text-dark-color);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.dropdown ul li:hover a {
+    color: var(--secondary-color);
+}
+
+.lists .active{
+    
+}
+
+.icon:hover {
+    color: var(--secondary-color);
+}
+
+@media only screen and (max-width: 767px) {
+    .desktopHeader{
+        display: none;
+    }
+}

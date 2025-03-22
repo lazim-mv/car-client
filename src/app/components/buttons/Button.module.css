@@ -1,0 +1,29 @@
+.buttonContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: var(--button-padding);
+    gap: .5vw;
+    border-radius: var(--14px);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background: transparent;
+    border: 1px solid var(--secondary-color);
+    cursor: pointer;
+}
+
+.buttonContainer:hover {
+    background: linear-gradient(225deg, var(--secondary-color) 0%, var(--secondary-color-dark, #2a2a2a) 100%);
+    color: var(--text-light-color) !important;
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2), 0 0 20px rgba(var(--secondary-color-rgb), 0.3);
+    border-color: transparent;
+}
+
+.buttonContainer:hover .buttonIcon {
+    color: var(--text-light-color) !important;
+    transform: scale(1.1) rotate(5deg);
+    transition: all 0.4s ease;
+}
