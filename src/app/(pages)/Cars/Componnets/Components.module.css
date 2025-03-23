@@ -1,0 +1,131 @@
+.overview, .features, .location, .reviews {
+    padding: var(--24px);
+    background: var(--background-light-color);
+    border-radius: var(--14px);
+}
+
+.description {
+    margin-bottom: var(--24px);
+}
+
+.description h4 {
+    font-size: var(--font-18);
+    margin-bottom: var(--14px);
+    color: var(--text-dark-color);
+}
+
+.description p {
+    color: var(--text-secondary-color);
+    line-height: 1.6;
+}
+
+.specs {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--24px);
+}
+
+.specItem {
+    display: flex;
+    align-items: center;
+    gap: var(--14px);
+    padding: var(--14px);
+    background: var(--background-light);
+    border-radius: var(--8px);
+}
+
+.specInfo {
+    display: flex;
+    flex-direction: column;
+    gap: var(--4px);
+}
+
+.specInfo span {
+    color: var(--text-secondary-color);
+    font-size: var(--font-14);
+}
+
+.specInfo strong {
+    color: var(--text-dark-color);
+    font-size: var(--font-16);
+}
+
+.featuresList {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--16px);
+}
+
+.featureItem {
+    display: flex;
+    align-items: center;
+    gap: var(--10px);
+    color: var(--text-dark-color);
+}
+
+.featureItem svg {
+    color: var(--secondary-color);
+}
+
+.map {
+    width: 100%;
+    height: calc(100vw * 300/1512);
+    border-radius: var(--14px);
+    overflow: hidden;
+    margin-bottom: var(--24px);
+}
+
+.reviewsList {
+    display: flex;
+    flex-direction: column;
+    gap: var(--24px);
+}
+
+.reviewItem {
+    padding: var(--16px);
+    background: var(--background-light);
+    border-radius: var(--8px);
+}
+
+.reviewHeader {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: var(--14px);
+}
+
+.reviewer {
+    display: flex;
+    align-items: center;
+    gap: var(--10px);
+}
+
+.reviewerInfo h5 {
+    color: var(--text-dark-color);
+    font-size: var(--font-16);
+}
+
+.reviewerInfo span {
+    color: var(--text-secondary-color);
+    font-size: var(--font-14);
+}
+
+.rating {
+    display: flex;
+    align-items: center;
+    gap: var(--4px);
+    color: var(--secondary-color);
+}
+
+@media only screen and (max-width: 767px) {
+    .specs {
+        grid-template-columns: 1fr;
+    }
+
+    .featuresList {
+        grid-template-columns: 1fr;
+    }
+
+    .map {
+        height: calc(100vw * 200/375);
+    }
+}

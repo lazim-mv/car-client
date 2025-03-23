@@ -2,17 +2,11 @@
 import React, { useState, useEffect } from 'react'
 import styles from './Section3.module.css'
 import Button2 from '../buttons/button2/Button2'
-import Image from 'next/image'
-import { Heart } from 'lucide-react'
-import { GitCompareArrows, Image as ImageGallery } from 'lucide-react'
-import { GitMerge } from 'lucide-react'
-import { Fuel } from 'lucide-react'
-import { Gauge } from 'lucide-react'
 import ImagePreview from '../ImagePreview/ImagePreview'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
 import CarGrid from './CarGrid'
-import { useWindowSize } from '@/app/utils/windowSize'
+import { useWindowSize } from '../../utils/windowSize'
 
 const Section3 = () => {
   const [activeTab, setActiveTab] = useState('All Cars');

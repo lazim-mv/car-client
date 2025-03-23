@@ -5,8 +5,11 @@ import Image from 'next/image'
 import Button2 from '../buttons/button2/Button2'
 import { Heart, GitCompareArrows, Image as ImageGallery, GitMerge, Fuel, Gauge } from 'lucide-react'
 import ImagePreview from '../ImagePreview/ImagePreview'
+import { formatCurrency } from '../../utils/formatCurrency'
+import { useRouter } from 'next/navigation'
 
 const CarGrid = ({ filteredCars }) => {
+  const router = useRouter();
   const [previewImage, setPreviewImage] = React.useState({ index: null, url: null })
 
   return (
@@ -37,16 +40,21 @@ const CarGrid = ({ filteredCars }) => {
               <span><Fuel className={styles.specIcon} /> {car.fueltype}</span>
               <span><Gauge className={styles.specIcon} /> {car.transmission}</span>
             </div>
-            <h4 className={styles.carPrice}>{car.price}</h4>
+            <h4 className={styles.carPrice}>{formatCurrency(car.price)}</h4>
             <div className={styles.bottom}>
-              <div className={styles.viewCarButton}>
+              <div className={styles.viewCarButton}
+                onClick={() => router.push(`/Cars/${car.carId}`)}>
                 <Button2 title='View' icon={false} />
               </div>
               <div className={styles.imageGallery}>
                 <ImageGallery
                   className={styles.icon}
-                  onClick={() => setPreviewImage({ index, url: car.image })}
-                /> {car.image?.length}
+                  onClick={() => setPreviewImage({
+                    index,
+                    url: car.image,
+                    images: car.additionalImage
+                  })}
+                /> {car.additionalImage?.length || 0}
               </div>
             </div>
           </div>

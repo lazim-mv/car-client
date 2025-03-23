@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import styles from "./Section4.module.css";
 
-import { useWindowSize } from "@/app/utils/windowSize";
+import { useWindowSize } from "../../utils/windowSize";
 import Button2 from "../buttons/button2/Button2";
 import { ArrowUpRight } from "lucide-react";
 import AOS from 'aos'
@@ -87,26 +87,26 @@ const Section4 = () => {
                                 transform: answerVisible[index]
                                     ? "rotate(180deg)"
                                     : "rotate(0deg)",
-                                transition: "transform .5s ease",
+                                transition: "transform 0.3s ease",
                             }} />
 
                         </div>
                         <div
                             className={`${styles.descContainer} ${answerVisible[index] ? styles.visible : ""
                                 }`}
-                            style={{ transition: "all 0.4s ease" }}
+                            style={{ transition: "all 0.3s ease" }}
                         >
                             <p className={styles.desc}>{data.description}</p>
                         </div>
                         {answerVisible[index] && (
-                            <div className={`${styles.serviceImgContainer}`} style={{ transition: "all 0.4s ease" }}>
+                            <div className={`${styles.serviceImgContainer}`} style={{ transition: "all 0.3s ease" }}>
                                 <Image
                                     src={data.img}
                                     width={300}
                                     height={500}
                                     alt="ImageClients"
                                     className={styles.serviceImg}
-                                    style={{ transition: "all 0.4s ease" }}
+                                    style={{ transition: "all 0.3s ease" }}
                                 />
                             </div>
                         )}

@@ -5,7 +5,7 @@
     padding: var(--button-padding);
     gap: .5vw;
     border-radius: var(--14px);
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     overflow: hidden;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -25,5 +25,5 @@
 .buttonContainer:hover .buttonIcon {
     color: var(--text-light-color) !important;
     transform: scale(1.1) rotate(5deg);
-    transition: all 0.4s ease;
+    transition: all 0.3s ease;
 }

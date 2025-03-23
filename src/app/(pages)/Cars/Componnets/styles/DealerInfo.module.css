@@ -1,0 +1,99 @@
+.container {
+    padding: var(--60px) 0 var(--40px) 0;
+    border-bottom: var(--1px) solid var(--border-color);
+    position: sticky;
+    top: var(--60px);
+}
+
+.dealer {
+    padding: var(--24px);
+    border: var(--1px) solid var(--border-color);
+    border-radius: var(--14px);
+    box-shadow: 0 var(--4px) var(--6px) rgba(0, 0, 0, 0.1);
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+    gap: var(--16px);
+    margin-bottom: var(--24px);
+}
+
+.avatar {
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.info h3 {
+    margin-bottom: var(--4px);
+}
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    padding: var(--4px) var(--8px);
+    background: #E8F5E9;
+    color: #2E7D32;
+    border-radius: var(--30px);
+    font-size: var(--font-14);
+}
+
+.location {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--8px);
+    margin-bottom: var(--24px);
+}
+
+.location .icon {
+    width: var(--16px);
+    height: var(--16px);
+    color: var(--text-desc-color);
+    margin-top: var(--4px);
+}
+
+.map {
+    width: 100%;
+    height: calc(100vw * 200/1512);
+    border-radius: var(--14px);
+    overflow: hidden;
+    margin-bottom: var(--24px);
+}
+
+.actions {
+    display: flex;
+    gap: var(--16px);
+}
+
+.callBtn,
+.chatBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--8px);
+    width: 50%;
+    padding: var(--14px);
+    border-radius: var(--14px);
+    font-size: var(--font-14);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.callBtn {
+    background: var(--secondary-color);
+    color: var(--primary-light-color);
+    border: var(--1px) solid var(--secondary-color);
+}
+
+.chatBtn {
+    background: #7ed422;
+    color: var(--primary-light-color);
+    border: var(--1px) solid #7ed422;
+}
+
+.callBtn:hover,
+.chatBtn:hover {
+    opacity: 0.9;
+    background-color: transparent;
+    color: var(--text-dark-color);
+}

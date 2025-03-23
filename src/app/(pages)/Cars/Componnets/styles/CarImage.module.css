@@ -1,0 +1,49 @@
+.container {
+    padding: var(--padding-36) var(--padding-36) 0;
+}
+
+.cards {
+    display: flex;
+    width: 100%;
+    overflow: hidden;
+    gap: var(--10px);
+    cursor: pointer;
+}
+
+.card {
+    width: calc(100vw * 192/1512);
+    height: calc(100vw * 467/1512);
+    border-radius: var(--14px);
+    overflow: hidden;
+}
+
+.activeCard {
+    width: calc(100vw * 710/1512);
+}
+
+.card:hover .carImage {
+    transform: scale(1.05);
+    transition: all 0.3s ease;
+}
+
+.carImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: var(--14px);
+    transition: all 0.3s ease;
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 25vw var(--padding-36) 0;
+    }
+
+    .card {
+        height: calc(100vw * 467/375);
+    }
+
+    .activeCard {
+        width: 100vw;
+    }
+}

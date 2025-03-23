@@ -13,11 +13,12 @@ const LoanCalculator = () => {
             easing: 'ease-in-out'
         })
     }, [])
+
     const [formData, setFormData] = useState({
-        totalPrice: 0,
-        downPayment: 0,
+        totalPrice: 100,
+        downPayment: 100,
         interestRate: 5,
-        amortizationPeriod: 12 // months
+        amortizationPeriod: 12 
     });
 
     const [monthlyPayment, setMonthlyPayment] = useState(0);

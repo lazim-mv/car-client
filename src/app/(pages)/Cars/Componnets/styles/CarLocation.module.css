@@ -1,0 +1,35 @@
+.container {
+    padding: var(--60px) 0 var(--40px) 0;
+    border-bottom: var(--1px) solid var(--border-color);
+}
+
+.container h2 {
+    margin-bottom: var(--24px);
+}
+
+.address {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--8px);
+    margin-bottom: var(--24px);
+}
+
+.icon {
+    width: var(--16px);
+    height: var(--16px);
+    color: var(--text-desc-color);
+    margin-top: var(--4px);
+}
+
+.address p {
+    color: var(--text-desc-color);
+    line-height: 1.6;
+}
+
+.map {
+    width: 100%;
+    height: calc(100vw * 520/1512);
+    border-radius: var(--8px);
+    overflow: hidden;
+    border: var(--1px) solid var(--border-color);
+}

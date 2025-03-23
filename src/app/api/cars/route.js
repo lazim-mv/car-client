@@ -1,4 +1,4 @@
-import { supabase } from "@/app/utils/supabaseClient";
+import { supabase } from "../../utils/supabaseClient";
 import { NextResponse } from "next/server";
 
 export async function GET() {
@@ -7,8 +7,10 @@ export async function GET() {
         const { data, error } = await supabase
             .from("carcategory")
             .select(`
+                
                 name,
                 cars:car (
+                    carid,
                     title,
                     year,
                     price,
@@ -30,15 +32,16 @@ export async function GET() {
         const transformedData = data.map(category => ({
             tabName: category.name,
             carData: category.cars.map(car => ({
+                carId: car.carid,
                 category: category.name,
                 name: car.title,
                 year: car.year,
-                price: `$${car.price}`,
+                price: `${car.price}`,
                 mileage: `${car.car_specifications?.mileage || "N/A"} km`,
                 transmission: car.car_specifications?.geartype || "N/A",
                 fueltype: car.car_specifications?.fueltype || "N/A",
                 image: car.car_images?.image || "/section3/default.webp",
-                additionalImage: car.car_images?.additionalimages?.[0] || null
+                additionalImage: car.car_images?.additionalimages || null
             }))
         }));
 

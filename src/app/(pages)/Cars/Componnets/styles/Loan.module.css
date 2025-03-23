@@ -1,0 +1,131 @@
+.container {
+    padding: var(--60px) 0 var(--40px) 0;
+    border-bottom: var(--1px) solid var(--border-color);
+}
+
+.container h2 {
+    margin-bottom: var(--8px);
+}
+
+.description {
+    margin-bottom: var(--24px);
+}
+
+.inputGroup {
+    display: flex;
+    flex-direction: column;
+    gap: var(--8px);
+    margin-bottom: var(--16px);
+}
+
+.inputGroup label {
+    color: var(--text-dark-color);
+    font-size: var(--font-14);
+}
+
+.inputGroup input {
+    padding: var(--14px);
+    border: var(--1px) solid var(--border-color);
+    border-radius: var(--8px);
+    font-size: var(--font-14);
+}
+
+.row {
+    display: flex;
+    gap: var(--24px);
+}
+
+.row .inputGroup {
+    width: 50%;
+}
+
+.select {
+    position: relative;
+    padding: var(--14px);
+    border: var(--1px) solid var(--border-color);
+    border-radius: var(--8px);
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.select span {
+    color: var(--text-dark-color);
+    font-size: var(--font-14);
+}
+
+.options {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    border: var(--1px) solid var(--border-color);
+    border-radius: var(--8px);
+    margin-top: var(--8px);
+    z-index: 10;
+}
+
+.option {
+    padding: var(--14px);
+    font-size: var(--font-14);
+    transition: all 0.3s ease;
+}
+
+.option:hover {
+    background: var(--border-color);
+}
+
+.result {
+    margin: var(--24px) 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--8px);
+}
+
+.resultItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.resultItem span {
+    color: var(--text-dark-color);
+    font-size: var(--font-14);
+}
+
+.resultItem strong {
+    font-size: var(--font-16);
+    color: var(--text-dark-color);
+}
+
+.monthly {
+    color: var(--secondary-color) !important;
+}
+
+.applyBtn {
+    width: 100%;
+    padding: var(--14px);
+    background: var(--secondary-color);
+    color: white;
+    border: none;
+    border-radius: var(--8px);
+    font-size: var(--font-14);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.applyBtn:hover {
+    opacity: 0.9;
+}
+
+@media only screen and (max-width: 767px) {
+    .row {
+        flex-direction: column;
+    }
+
+    .row .inputGroup {
+        width: 100%;
+    }
+}
