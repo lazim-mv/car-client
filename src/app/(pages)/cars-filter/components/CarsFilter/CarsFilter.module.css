@@ -1,6 +1,9 @@
 .container {
     width: 100%;
     padding: var(--padding-36) var(--padding-horizontal);
+    position: sticky;
+    top: -2.8vw;
+    z-index: 99;
 }
 
 .filterBar {
@@ -10,6 +13,8 @@
     background: var(--primary-light-color);
     padding: var(--22px);
     border-radius: var(--16px);
+    box-shadow: 0 var(--4px) var(--6px) rgba(0, 0, 0, 0.1);
+   
 }
 
 .selectGroup {
@@ -85,4 +90,57 @@
 
 .searchIcon {
     width: var(--14px);
+}
+
+@media only screen and (max-width: 767px) {
+    .container {
+        padding: var(--100px) var(--padding-horizontal) var(--24px);
+        position: relative;
+        top: 0;
+    }
+
+    .filterBar {
+        flex-direction: column;
+        gap: var(--12px);
+        padding: var(--16px);
+        border-radius: var(--14px);
+    }
+
+    .selectGroup {
+        flex-direction: column;
+        gap: var(--12px);
+        width: 100%;
+    }
+
+    .selectWrapper {
+        width: 100%;
+    }
+
+    .select, .input {
+        padding: var(--12px);
+        border-radius: var(--14px);
+        font-size: var(--font-14);
+    }
+
+    .select {
+        padding-right: var(--30px);
+    }
+
+    .selectIcon {
+        right: var(--12px);
+        width: var(--16px);
+        height: var(--16px);
+    }
+
+    .searchButton {
+        width: 100%;
+        padding: var(--12px);
+        border-radius: var(--14px);
+        font-size: var(--font-14);
+        justify-content: center;
+    }
+
+    .searchIcon {
+        width: var(--16px);
+    }
 }

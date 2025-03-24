@@ -15,6 +15,7 @@
     height: calc(100vw * 467/1512);
     border-radius: var(--14px);
     overflow: hidden;
+    position: relative;
 }
 
 .activeCard {
@@ -34,16 +35,42 @@
     transition: all 0.3s ease;
 }
 
+.imageGallery {
+    display: flex;
+    position: absolute;
+    left: 2vw;
+    bottom: 2vw;
+    background-color: var(--text-light-color);
+    border-radius: var(--8px);
+    padding: var(--12px);
+    box-shadow: 0 var(--4px) var(--6px) rgba(0, 0, 0, 0.1);
+}
+
 @media (max-width: 768px) {
     .container {
         padding: 25vw var(--padding-36) 0;
     }
 
+    .cards {
+        gap: 0;
+    }
+
     .card {
         height: calc(100vw * 467/375);
+        width: 0;
     }
 
     .activeCard {
         width: 100vw;
+        z-index: 0;
     }
+
+    .imageGallery {
+        display: flex;
+        position: absolute;
+        left: 4vw;
+        bottom: 4vw;
+        z-index: 20;
+    }
+
 }

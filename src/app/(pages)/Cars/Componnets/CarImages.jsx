@@ -1,29 +1,13 @@
 import React, { useState } from 'react'
 import styles from "./styles/CarImage.module.css"
 import Image from 'next/image';
+import { Image as ImageGallery } from 'lucide-react'
+import ImagePreview from '../../../components/ImagePreview/ImagePreview';
 
-const CarImages = ({carImages}) => {
+const CarImages = ({ carImages }) => {
 
     const [current, setCurrent] = useState(0);
-
-    const data = {
-        category: "Crossover",
-        name: "BMW i7 2022",
-        year: "2022",
-        price: "$60,109",
-        fueltype: "Petrol",
-        transmission: "Automatic",
-        mileage: "2204 km",
-        image: "/section3/1.webp",
-        Images: [
-            "/section3/1.webp",
-            "/section3/2.webp",
-            "/section3/3.webp",
-            "/section3/4.webp",
-            "/section3/1.webp",
-            "/section3/2.webp",
-        ]
-    };
+    const [previewImage, setPreviewImage] = React.useState({ index: null, url: null })
 
     return (
         <div className={styles.container}>
@@ -34,10 +18,37 @@ const CarImages = ({carImages}) => {
                         key={index}
                         style={{ transition: "all 0.3s ease" }}
                     >
-                        <Image src={data} alt="image" width={300} height={200} className={styles.carImage} quality={100}/>
+                        <Image src={data} alt="image" width={300} height={200} className={styles.carImage} quality={100} />
+                        <div className={styles.imageGallery}>
+                            <ImageGallery
+                                className={styles.icon}
+                                onClick={() => setPreviewImage({
+                                    index,
+                                    url: carImages[0],
+                                    images: carImages
+                                })}
+                            /> {carImages?.length || 0}
+                        </div>
                     </div>
                 ))}
             </div>
+            {previewImage.url && (
+                <ImagePreview
+                    images={previewImage.images}
+                    currentIndex={previewImage.index}
+                    onClose={(newIndex) => {
+                        if (newIndex === null) {
+                            setPreviewImage({ index: null, url: null, images: [] })
+                        } else {
+                            setPreviewImage({
+                                index: newIndex,
+                                url: previewImage.images[newIndex],
+                                images: previewImage.images
+                            })
+                        }
+                    }}
+                />
+            )}
         </div>
     )
 }

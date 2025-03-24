@@ -27,7 +27,7 @@ const Header = () => {
             <ul className={styles.lists}>
                 <Link href="/"><li>Home </li></Link>
                 <Link href="/about-us"><li>About</li></Link>
-                <li className={styles.buyCarMenu} onClick={handleMenuToggle}>
+                {/* <li className={styles.buyCarMenu} onClick={handleMenuToggle}>
                     Buy Car <ChevronDown />
 
                     {isMenuOpen && <div className={styles.dropdown}>
@@ -40,7 +40,10 @@ const Header = () => {
                             <li><Link href="/cars/electric">Electric Car</Link></li>
                         </ul>
                     </div>}
-                </li>
+                </li> */}
+                <Link href="/cars-filter">
+                    <li>Buy a car</li>
+                </Link>
                 <Link href="/news">
                     <li>News</li>
                 </Link>

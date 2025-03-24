@@ -33,3 +33,22 @@
     overflow: hidden;
     border: var(--1px) solid var(--border-color);
 }
+
+@media only screen and (max-width: 767px) {
+    .container {
+        padding: var(--40px) 0;
+    }
+
+    .container h2 {
+        text-align: left;
+        margin-bottom: 0;
+    }
+
+    .address {
+        margin-bottom: var(--24px);
+    }
+
+    .map{
+        height: calc(100vw* 520 / 375);;
+    }
+}

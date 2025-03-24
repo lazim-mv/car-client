@@ -121,6 +121,16 @@
 }
 
 @media only screen and (max-width: 767px) {
+
+    .container {
+        padding: var(--40px) 0;
+    }
+
+    .container h2 {
+        text-align: left;
+        margin-bottom: var(--24px);
+    }
+
     .row {
         flex-direction: column;
     }

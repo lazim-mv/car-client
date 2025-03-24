@@ -8,9 +8,13 @@ import ImagePreview from '../ImagePreview/ImagePreview'
 import { formatCurrency } from '../../utils/formatCurrency'
 import { useRouter } from 'next/navigation'
 
-const CarGrid = ({ filteredCars }) => {
+const CarGrid = ({ filteredCars, loading }) => {
   const router = useRouter();
-  const [previewImage, setPreviewImage] = React.useState({ index: null, url: null })
+  const [previewImage, setPreviewImage] = React.useState({ index: null, url: null });
+
+  if (loading) {
+    return <div>Loading...</div>
+  }
 
   return (
     <div className={styles.row2}>
@@ -50,9 +54,9 @@ const CarGrid = ({ filteredCars }) => {
                 <ImageGallery
                   className={styles.icon}
                   onClick={() => setPreviewImage({
-                    index,
+                    index: 0,
                     url: car.image,
-                    images: car.additionalImage
+                    images: [car.image, ...(car.additionalImage || [])]
                   })}
                 /> {car.additionalImage?.length || 0}
               </div>
@@ -62,16 +66,16 @@ const CarGrid = ({ filteredCars }) => {
       ))}
       {previewImage.url && (
         <ImagePreview
-          imageUrl={previewImage.url}
-          images={filteredCars.map(car => car.image)}
+          images={previewImage.images}
           currentIndex={previewImage.index}
           onClose={(newIndex) => {
             if (newIndex === null) {
-              setPreviewImage({ index: null, url: null })
+              setPreviewImage({ index: null, url: null, images: [] })
             } else {
               setPreviewImage({
                 index: newIndex,
-                url: filteredCars[newIndex].image
+                url: previewImage.images[newIndex],
+                images: previewImage.images
               })
             }
           }}

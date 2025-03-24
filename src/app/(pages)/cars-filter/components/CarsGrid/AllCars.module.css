@@ -1,0 +1,277 @@
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: var(--30px);
+    padding: var(--40px) var(--padding-horizontal);
+}
+
+.carCard {
+    background: white;
+    overflow: hidden;
+    box-shadow: 0 var(--4px) var(--6px) rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    border-radius: var(--14px);
+}
+
+.carCard:hover {
+    transform: translateY(-4px);
+}
+
+.imageContainer {
+    position: relative;
+    aspect-ratio: 3/2;
+}
+
+.image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.badges {
+    position: absolute;
+    top: var(--16px);
+    left: var(--16px);
+    display: flex;
+    gap: var(--8px);
+}
+
+.badge {
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 4px;
+    font-size: 0.875rem;
+}
+
+.actions {
+    position: absolute;
+    top: var(--16px);
+    right: var(--16px);
+    display: flex;
+    gap: var(--8px);
+}
+
+.actionButton {
+    background: white;
+    border: none;
+    width: var(--36px);
+    height: var(--36px);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.actionButton:hover{
+    transform: translateY(-2px);
+    background-color: var(--secondary-color);
+    color: var(--text-light-color);
+    transition: all 0.3s ease;
+}
+
+.content {
+    padding: var(--16px) var(--16px) var(--14px);
+}
+
+.title {
+    font-size: var(--font-18);
+    margin-bottom: var(--8px);
+}
+
+.details {
+    display: flex;
+    gap: var(--16px);
+    color: #666;
+    font-size: var(--font-14);
+    margin-bottom: var(--20px);
+    white-space: nowrap;
+}
+
+.price {
+    font-size: var(--font-20);
+    font-weight: 500;
+    margin-bottom: var(--20px);
+    color: var(--secondary-color);
+}
+
+.viewButton {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.chatIcon {
+    width: var(--36px);
+    height: var(--36px);
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.chatIcon:hover {
+    transform: scale(1.1);
+}
+
+.carInfo {
+    padding: 1.06vw;
+    width: 100%;
+    height: max-content;
+}
+
+.category {
+    color: var(--secondary-color);
+    font-size: var(--font-14);
+    margin-bottom: var(--4px);
+}
+
+.carName {
+    font-size: var(--font-18);
+    margin-bottom: var(--8px);
+    width: max-content;
+}
+
+.carSpecs {
+    display: flex;
+    gap: var(--16px);
+    color: #666;
+    font-size: var(--font-14);
+    margin-bottom: var(--20px);
+    white-space: nowrap;
+}
+
+.carSpecs span {
+    display: flex;
+    align-items: center;
+    gap: var(--4px);
+}
+
+.specIcon {
+    width: var(--12px);
+}
+
+
+.carPrice {
+    font-size: var(--font-20);
+    font-weight: 500;
+    color: var(--secondary-color);
+    padding-bottom: var(--20px);
+    border-bottom: var(--1px) solid var(--border-color);
+}
+
+.bottom {
+    display: flex;
+    /* justify-content: space-between; */
+    align-items: center;
+    margin-top: var(--16px);
+    gap: var(--10px);
+}
+
+.imageGallery {
+    display: flex;
+    gap: var(--8px);
+    align-items: center;
+    padding: 0.66vw 1.59vw;
+    border-radius: var(--14px);
+    box-shadow: 0 var(--4px) var(--6px) rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.imageGallery:hover {
+    transform: translateY(-4px);
+    transition: all 0.3s ease;
+    background: var(--secondary-color);
+    color: var(--text-light-color);
+}
+
+.viewCarButton:hover {
+    transform: translateY(-4px);
+    transition: all 0.3s ease;
+}
+
+
+@media only screen and (max-width: 767px) {
+    .grid {
+        grid-template-columns: 1fr;
+        gap: var(--20px);
+        padding: var(--20px) var(--padding-horizontal);
+    }
+
+    .carCard {
+        box-shadow: 0 var(--2px) var(--4px) rgba(0, 0, 0, 0.1);
+        border-radius: var(--8px);
+    }
+
+    .badges {
+        top: var(--10px);
+        left: var(--10px);
+        gap: var(--4px);
+    }
+
+    .actions {
+        top: var(--10px);
+        right: var(--10px);
+        gap: var(--4px);
+    }
+
+    .actionButton {
+        width: var(--30px);
+        height: var(--30px);
+    }
+
+    .content {
+        padding: var(--12px);
+    }
+
+    .title {
+        font-size: var(--font-16);
+        margin-bottom: var(--4px);
+    }
+
+    .details {
+        gap: var(--8px);
+        font-size: var(--font-14);
+        margin-bottom: var(--12px);
+    }
+
+    .price {
+        font-size: var(--font-18);
+        margin-bottom: var(--12px);
+    }
+
+    .chatIcon {
+        width: var(--30px);
+        height: var(--30px);
+    }
+
+    .carInfo {
+        padding: var(--12px);
+    }
+
+    .carSpecs {
+        gap: var(--8px);
+        margin-bottom: var(--12px);
+    }
+
+    .specIcon {
+        width: var(--10px);
+    }
+
+    .carPrice {
+        font-size: var(--font-18);
+        padding-bottom: var(--12px);
+    }
+
+    .bottom {
+        margin-top: var(--12px);
+        gap: var(--8px);
+    }
+
+    .imageGallery {
+        padding: var(--8px) var(--12px);
+        border-radius: var(--8px);
+    }
+}

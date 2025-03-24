@@ -2,99 +2,147 @@
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.9);
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.95);
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 1000;
-    animation: fadeIn 0.3s ease;
+    z-index: 99999;
 }
 
 .modal {
-    position: relative;
-    max-width: 90%;
-    max-height: 90vh;
-    animation: scaleIn 0.3s ease;
-}
-
-.closeButton {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    background: white;
-    border: none;
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
+    width: 100vw;
+    height: 100vh;
     display: flex;
-    align-items: center;
     justify-content: center;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    z-index: 1001;
-    animation: fadeIn 0.3s ease;
+    align-items: center;
+    overflow: hidden;
 }
 
-.closeButton:hover {
-    background: var(--primary-color);
-    color: white;
+.imageWrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 48px;
 }
 
 .image {
-    max-width: 100%;
-    max-height: 90vh;
+    max-width: 90%;
+    max-height: 80vh;
     object-fit: contain;
 }
 
-.navButton {
-    position: fixed;
-    top: 50%;
+.closeButton {
+    position: absolute;
+    top: 4%;
     transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.5);
+    right: 24px;
+    background: rgba(255, 255, 255, 0.1);
     border: none;
+    width: 48px;
+    height: 48px;
     border-radius: 50%;
-    width: 40px;
-    height: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    transition: background-color 0.3s ease;
     color: white;
-    padding: 8px;
-    z-index: 1001;
-    animation: fadeIn 0.3s ease;
+    z-index: 100000;
 }
 
-.navButton:hover {
-    background-color: rgba(0, 0, 0, 0.8);
+.navButton {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: white;
+    z-index: 100000;
 }
 
 .leftButton {
-    left: 80px;
+    left: 24px;
 }
 
 .rightButton {
-    right: 80px;
+    right: 24px;
 }
-@keyframes fadeIn {
+
+.loaderContainer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+}
+
+.loader {
+    color: #fff;
+    animation: spin 1s linear infinite;
+}
+
+.imageLoading {
+    opacity: 0;
+}
+
+.image {
+    transition: opacity 0.3s ease;
+    opacity: 1;
+}
+
+@keyframes spin {
     from {
-        opacity: 0;
+        transform: rotate(0deg);
     }
+
     to {
-        opacity: 1;
+        transform: rotate(360deg);
     }
 }
 
-@keyframes scaleIn {
-    from {
-        transform: scale(0.9);
-        opacity: 0;
+
+@media (max-width: 768px) {
+    .imageWrapper {
+        padding: 16px;
     }
-    to {
-        transform: scale(1);
-        opacity: 1;
+
+    .closeButton {
+        width: 40px;
+        height: 40px;
+        top: 10vw;
+        right: 5vw;
+    }
+
+    .navButton {
+        width: var(--40px);
+        height: var(--40px);
+        background-color: var(--secondary-color);
+    }
+
+    .leftButton {
+        left: 16px;
+    }
+
+    .rightButton {
+        right: 16px;
+    }
+
+    .image {
+        max-width: 100%;
+        max-height: 70vh;
     }
 }

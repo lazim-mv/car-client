@@ -27,7 +27,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 2vw;
+    gap: var(--40px);
 }
 
 .lists li {

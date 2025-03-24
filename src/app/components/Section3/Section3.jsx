@@ -8,12 +8,19 @@ import 'aos/dist/aos.css'
 import CarGrid from './CarGrid'
 import { useWindowSize } from '../../utils/windowSize'
 
-const Section3 = () => {
+const Section3 = ({ carData, loading }) => {
   const [activeTab, setActiveTab] = useState('All Cars');
   const [previewImage, setPreviewImage] = useState({ index: null, url: null });
   const [categories, setCategories] = useState([]);
-  const [loading, setLoading] = useState(true);
   const { windowSize, isSmallScreen } = useWindowSize();
+
+  useEffect(() => {
+    AOS.init({
+      duration: 800,
+      once: false,
+      easing: 'ease-in-out'
+    })
+  }, [])
 
   const defaultData = [
     {
@@ -69,46 +76,24 @@ const Section3 = () => {
   ];
 
   useEffect(() => {
-    AOS.init({
-      duration: 800,
-      once: false,
-      easing: 'ease-in-out'
-    });
-
-    const fetchCarData = async () => {
-      try {
-        const response = await fetch('/api/cars');
-        const data = await response.json();
-        if (data && data.length > 0) {
-          const allCarsCategory = {
-            tabName: "All Cars",
-            carData: data.flatMap(category => category.carData)
-          };
-          setCategories([allCarsCategory, ...data]);
-        } else {
-          setCategories(defaultData);
-        }
-      } catch (error) {
-        console.error('Error fetching car data:', error);
-        setCategories(defaultData);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchCarData();
-  }, []);
+    if (carData && carData.length > 0) {
+      const allCarsCategory = {
+        tabName: "All Cars",
+        carData: carData.flatMap(category => category.carData)
+      };
+      setCategories([allCarsCategory, ...carData]);
+    } else {
+      // setCategories(defaultData);
+    }
+  }, [carData]);
 
   const activeData = categories.length > 0 ? categories : defaultData;
-  const sixData = activeData[0].carData.slice(0, 4);
+  const sixData = activeData[0].carData.slice(0, 6);
 
   const filteredCars = sixData.filter(car =>
     activeTab === 'All Cars' ? true : car.category === activeTab
   );
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
 
   return (
     <div className={styles.container}>
@@ -128,7 +113,7 @@ const Section3 = () => {
         ))}
       </div>
       <div className={styles.row2}>
-        <CarGrid filteredCars={filteredCars} />
+        <CarGrid filteredCars={filteredCars} loading={loading} />
       </div>
       {isSmallScreen && (
         <div className={styles.mobileButton}>
