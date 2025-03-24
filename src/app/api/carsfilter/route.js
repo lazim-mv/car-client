@@ -1,60 +1,73 @@
-import { NextResponse } from "next/server"
 import { supabase } from "../../utils/supabaseClient"
+import { NextResponse } from 'next/server'
 
 export async function GET(request) {
     try {
         const { searchParams } = new URL(request.url)
-        const make = searchParams.get('make')
-        const model = searchParams.get('model')
-        const body = searchParams.get('body')
-        const title = searchParams.get('title')
+        const page = parseInt(searchParams.get('page')) || 1
+        const limit = parseInt(searchParams.get('limit')) || 9
+        const start = (page - 1) * limit
 
+        // Get total count
+        const { count } = await supabase
+            .from('car')
+            .select('*', { count: 'exact' })
+            .eq('status', 'Available')
 
-        let query = supabase
+        // Main query with pagination
+        const query = supabase
             .from('car')
             .select(`
                 *,
-                car_images!inner (
-                    image,
-                    additionalimages
+                car_images!inner (*),
+                car_specifications (
+                    mileage,
+                    geartype,
+                    fueltype
                 ),
-                 car_specifications (
-                        mileage,
-                        geartype,
-                        fueltype
-                    ),
                 carbrand:brandid(name),
                 carmodel:modelid(name),
-                carcategory:categoryid(name)
+                carcategory:categoryid(*)
             `)
             .eq('status', 'Available')
+            .range(start, start + limit - 1)
 
-        if (make) query = query.eq('brandid', make)
-        if (model) query = query.eq('modelid', model)
-        if (body) query = query.eq('categoryid', body)
-        if (title) query = query.ilike('title', `%${title}%`)
+        if (searchParams.get('body')) {
+            query.eq('categoryid', parseInt(searchParams.get('body')))
+        }
+        if (searchParams.get('make')) {
+            query.eq('brandid', parseInt(searchParams.get('make')))
+        }
+        if (searchParams.get('model')) {
+            query.eq('modelid', parseInt(searchParams.get('model')))
+        }
+        if (searchParams.get('title')) {
+            query.ilike('title', `%${searchParams.get('title')}%`)
+        }
 
         const { data, error } = await query
 
         if (error) throw error
 
-        const formattedData = data.map(car => ({
-            ...car,
-            image: car.car_images.image,
-            additionalImages: car.car_images.additionalimages,
-            car_images: undefined,
-            specifications: {
-                mileage: car.car_specifications?.mileage,
-                geartype: car.car_specifications?.geartype,
-                fueltype: car.car_specifications?.fueltype
-            },
-        }))
-
-        return NextResponse.json(formattedData)
+        return NextResponse.json({
+            cars: data || [],
+            pagination: {
+                total: count,
+                page,
+                limit,
+                totalPages: Math.ceil(count / limit)
+            }
+        })
     } catch (error) {
-        return NextResponse.json(
-            { error: error.message },
-            { status: 500 }
-        )
+        console.error('Error:', error)
+        return NextResponse.json({
+            cars: [],
+            pagination: {
+                total: 0,
+                page: 1,
+                limit: 9,
+                totalPages: 1
+            }
+        }, { status: 500 })
     }
 }

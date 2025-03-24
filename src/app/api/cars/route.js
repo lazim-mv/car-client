@@ -61,7 +61,6 @@ export async function GET() {
                 })),
         }));
 
-        console.log("Transformed Data:", JSON.stringify(transformedData, null, 2));
 
         return NextResponse.json(transformedData, { status: 200 });
     } catch (error) {

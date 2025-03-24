@@ -1,63 +1,56 @@
-import { supabase } from "../../utils/supabaseClient"
 import CarsFilter from "./components/CarsFilter/CarsFilter"
 import AllCars from './components/CarsGrid/AllCars'
+import Pagination from './components/Pagination/Pagination'
 
 async function getCars(searchParams) {
     try {
-        console.log('Search Params:', searchParams) // Debug log
+        const page = searchParams?.page || 1
+        const limit = 9
+        const queryParams = new URLSearchParams({
+            ...searchParams,
+            page,
+            limit
+        })
+        const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000'
+        const response = await fetch(`${baseUrl}/api/carsfilter?${queryParams}`, {
+            cache: 'no-store'
+        })
 
-        const query = supabase
-            .from('car')
-            .select(`
-                *,
-                car_images!inner (*),
-                car_specifications (
-                    mileage,
-                    geartype,
-                    fueltype
-                ),
-                carbrand:brandid(name),
-                carmodel:modelid(name),
-                carcategory:categoryid(*)
-            `)
-            .eq('status', 'Available')
-
-        // 🔍 Filter based on category ID from searchParams
-        if (searchParams?.body) {
-            query.contains('carcategory.car_ids', [parseInt(searchParams.body)]) 
-        }
-        if (searchParams?.make) {
-            query.eq('brandid', parseInt(searchParams.make))
-        }
-        if (searchParams?.model) {
-            query.eq('modelid', parseInt(searchParams.model))
-        }
-        if (searchParams?.title) {
-            query.ilike('title', `%${searchParams.title}%`)
+        if (!response.ok) {
+            throw new Error('Failed to fetch cars')
         }
 
-        const { data, error } = await query
-        console.log('Query Result:', data, error) // Debug log
-
-        if (error) throw error
+        const data = await response.json()
+        // console.log('API Response:', data) // Debug log
         return data
     } catch (error) {
         console.error('Error:', error)
-        return []
+        return {
+            cars: [],
+            pagination: {
+                total: 0,
+                page: 1,
+                limit: 9,
+                totalPages: 1
+            }
+        }
     }
 }
 
-// 🚀 Server Component
 export default async function CarsFilterPage({ searchParams }) {
-    const cars = await getCars(searchParams) // Server-side fetch
-    console.log(cars, "carsPageData")
-
+    const { cars = [], pagination = { page: 1, totalPages: 1 } } = await getCars(searchParams)
+    console.log(cars, "cars")
     return (
         <div>
             <CarsFilter />
             <AllCars
                 cars={cars}
                 loading={false}
+            />
+            <Pagination
+                currentPage={pagination?.page || 1}
+                totalPages={pagination?.totalPages || 1}
+                searchParams={searchParams}
             />
         </div>
     )

@@ -31,7 +31,7 @@ const ContactForm = () => {
             <div className={styles.content}>
                 <div className={styles.heading}>
                     <h2>Get in Touch</h2>
-                    <p>We'd love to hear from you. Please fill out this form.</p>
+                    <p>We&apos;d love to hear from you. Please fill out this form.</p>
                 </div>
                 <form className={styles.form} onSubmit={handleSubmit}>
                     <div className={styles.inputGroup}>

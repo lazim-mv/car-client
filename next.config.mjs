@@ -1,6 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     images: {
+        domains: ['cars-client-iota.vercel.app'],
         remotePatterns: [
             {
                 protocol: 'http',
@@ -9,17 +10,6 @@ const nextConfig = {
             {
                 protocol: 'https',
                 hostname: 'clristqyqfvryzmxndjz.supabase.co',
-            }, {
-                protocol: 'https',
-                hostname: 'www.instagram.com',
-            },
-            {
-                protocol: 'https',
-                hostname: 'platform.instagram.com',
-            },
-            {
-                protocol: 'https',
-                hostname: '*.cdninstagram.com',
             },
             {
                 protocol: "https",
@@ -28,7 +18,12 @@ const nextConfig = {
             {
                 protocol: "https",
                 hostname: "images.unsplash.com",
-            }
+            },
+            {
+                protocol: 'https',
+                hostname: 'cars-client-iota.vercel.app',
+                pathname: '/**',
+            },
         ],
     },
 
