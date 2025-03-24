@@ -97,6 +97,7 @@
         padding: var(--100px) var(--padding-horizontal) var(--24px);
         position: relative;
         top: 0;
+        z-index: 0;
     }
 
     .filterBar {

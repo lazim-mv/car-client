@@ -1,7 +1,9 @@
 'use client'
 import { useState, useEffect } from 'react'
+import styles from './components/CarsFilter/CarsFilter.module.css'
 import CarsFilter from "./components/CarsFilter/CarsFilter"
 import AllCars from './components/CarsGrid/AllCars'
+
 
 const CarsFilterPage = () => {
     const [cars, setCars] = useState([])
@@ -45,7 +47,7 @@ const CarsFilterPage = () => {
     }, [filters])
 
     return (
-        <div>
+        <div className={styles.mainContainer}>
             <CarsFilter 
                 filters={filters} 
                 onFilterChange={handleFilterChange}

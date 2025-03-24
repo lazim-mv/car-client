@@ -76,7 +76,7 @@ const CarGrid = ({ cars, loading }) => {
                                     </div>
                                     <div className={styles.imageGallery}>
                                         <ImageGallery
-                                            className={styles.imageGalleryIcon}
+                                            className="icon"
                                             onClick={() => setPreviewImage({
                                                 index,
                                                 url: car?.image,

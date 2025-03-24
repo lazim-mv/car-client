@@ -54,8 +54,9 @@
   background: none;
   border: var(--1px) solid var(--border-color);
   border-radius: 50%;
-  width: var(--30px);
-  height: var(--30px);
+  padding: var(--12px);
+  width: max-content;
+  height: max-content;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -69,8 +70,8 @@
 }
 
 .socialIcon {
-  width: var(--16px);
-  height: var(--16px);
+  width: var(--icon-size);
+  height: var(--icon-size);
   color: var(--text-dark-color);
   transition: all 0.3s ease;
 }
@@ -83,6 +84,10 @@
 @media only screen and (max-width: 767px) {
   .agentsSection {
     padding: var(--padding-60) var(--padding-horizontal) 0;
+  }
+
+  .agentsSection h2 {
+    margin-bottom: var(--20px);
   }
 
   .agentCard {

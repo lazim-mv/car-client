@@ -271,7 +271,7 @@
     }
 
     .imageGallery {
-        padding: var(--8px) var(--12px);
-        border-radius: var(--8px);
+        padding: var(--10px) var(--24px);
+        border-radius: var(--14px);
     }
 }

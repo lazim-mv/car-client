@@ -52,7 +52,7 @@ const NewsList = ({ posts = dummyPosts, title }) => {
                     <article className={styles.newsCard}>
                         <Image width={485} height={365} src={post.image} alt={post.title} className={styles.newsImage} />
                         <div className={styles.newsContent}>
-                            <h3>{post.title}</h3>
+                            <h4>{post.title}</h4>
                             <div className={styles.metadata}>
                                 <span>{post.date}</span>
                                 <span>{post.author}</span>

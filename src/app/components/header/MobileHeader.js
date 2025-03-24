@@ -39,6 +39,13 @@ const MobileHeader = () => {
             Home
           </Link>
           <Link
+            href="/about-us"
+            className={styles.navLink}
+            onClick={toggleMenu}
+          >
+            About
+          </Link>
+          <Link
             href="/buy-car"
             className={styles.navLink}
             onClick={toggleMenu}
@@ -46,33 +53,19 @@ const MobileHeader = () => {
             Buy Car
           </Link>
           <Link
-            href="/listing"
+            href="/news"
             className={styles.navLink}
             onClick={toggleMenu}
           >
-            Listing
+            News
           </Link>
-          <Link
-            href="/about-us"
-            className={styles.navLink}
-            onClick={toggleMenu}
-          >
-            About Us
-          </Link>
-          <Link
-            href="/blog"
-            className={styles.navLink}
-            onClick={toggleMenu}
-          >
-            Blog
-          </Link>
-          <Link
+          {/* <Link
             href="/contact"
             className={styles.navLink}
             onClick={toggleMenu}
           >
             Contact
-          </Link>
+          </Link> */}
         </nav>
 
         <div className={styles.contactSection}>

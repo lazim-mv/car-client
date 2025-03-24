@@ -44,7 +44,7 @@
     padding: var(--24px);
 }
 
-.newsContent h3 {
+.newsContent h4 {
     margin: 0 0 var(--16px);
     white-space: nowrap;
     width: 100%;
@@ -80,6 +80,10 @@
 @media (max-width: 768px) {
     .container {
         padding: var(--padding-60) var(--padding-horizontal);
+    }
+
+    .container h2 {
+        margin-bottom: var(--20px);
     }
 
     .cards {

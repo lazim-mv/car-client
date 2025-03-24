@@ -184,19 +184,38 @@
     font-size: var(--font-16);
 }
 
+.imageGallery {
+    display: flex;
+    gap: var(--8px);
+    align-items: center;
+    padding: 0.66vw 1.59vw;
+    border-radius: var(--14px);
+    box-shadow: 0 var(--4px) var(--6px) rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.imageGallery:hover {
+    transform: translateY(-4px);
+    transition: all 0.3s ease;
+    background: var(--secondary-color);
+    color: var(--text-light-color);
+}
+
 .icon {
     height: 1.5vw;
     width: 1.5vw;
 }
 
-.imageGallery:hover {
-    color: var(--secondary-color);
-    transition: all 0.3s ease;
-}
-
 .viewCarButton {
     margin-top: var(--10px);
     width: max-content;
+    transition: all 0.3s ease;
+}
+
+.viewCarButton:hover {
+    transform: translateY(-4px);
+    transition: all 0.3s ease;
 }
 
 
@@ -205,7 +224,7 @@
         padding: var(--padding-60) var(--padding-horizontal) 0;
     }
 
-    .row1{
+    .row1 {
         margin-bottom: var(--20px);
         align-items: center;
         justify-content: center;
@@ -248,17 +267,17 @@
         /* min-height: 13.33vw; */
     }
 
-    .carSpecs{
+    .carSpecs {
         flex-wrap: wrap;
         justify-content: flex-start;
     }
 
-    .icon{
+    .icon {
         width: var(--14px);
         height: var(--14px);
     }
 
-    .mobileButton{
+    .mobileButton {
         margin-top: var(--20px);
     }
 }
