@@ -1,8 +1,6 @@
 'use client';
 
-import React, { useEffect } from 'react';
-import AOS from 'aos';
-import 'aos/dist/aos.css';
+import React from 'react';
 import styles from './NewsList.module.css';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -35,12 +33,6 @@ const dummyPosts = [
 ];
 
 const NewsList = ({ posts = dummyPosts, title }) => {
-    useEffect(() => {
-        AOS.init({
-            duration: 800,
-            once: true
-        });
-    }, []);
     return (
         <div className={styles.container}>
             {title &&

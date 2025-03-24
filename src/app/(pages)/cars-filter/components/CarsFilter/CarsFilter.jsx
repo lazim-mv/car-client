@@ -3,27 +3,37 @@ import React, { useState, useEffect } from 'react'
 import styles from './CarsFilter.module.css'
 import { ChevronDown, Search } from 'lucide-react'
 import useGetCarBrandAndModels from '../../../../hooks/common/useGetCarBrandAndModels'
+import { useRouter, useSearchParams } from 'next/navigation'
+import useGetCarCategories from '../../../../hooks/common/useGetCarCategories'
 
-const CarsFilter = ({ filters, onFilterChange }) => {
-    const [searchTitle, setSearchTitle] = useState('')
+const CarsFilter = () => {
+    const router = useRouter();
+    const searchParams = useSearchParams();
+    const { categories } = useGetCarCategories();
+
+    const [searchTitle, setSearchTitle] = useState(searchParams.get('title') || '')
     const { brands, models, selectedBrand, setSelectedBrand } = useGetCarBrandAndModels()
+    const [currentModel, setCurrentModel] = useState(searchParams.get('model') || '')
+    const [currentBody, setCurrentBody] = useState(searchParams.get('body') || '')
+
+    useEffect(() => {
+        setSelectedBrand(searchParams.get('make') || '')
+    }, [])
 
     const handleSearch = () => {
-        onFilterChange({
-            make: selectedBrand,
-            model: filters.model,
-            body: filters.body,
-            title: searchTitle
-        })
+        const params = new URLSearchParams()
+        if (selectedBrand) params.set('make', selectedBrand)
+        if (currentModel) params.set('model', currentModel)
+        if (currentBody) params.set('body', currentBody) 
+        if (searchTitle) params.set('title', searchTitle)
+
+        router.push(`/cars-filter?${params.toString()}`)
     }
 
-    // Update models when brand changes
+    // Reset model when brand changes
     useEffect(() => {
-        if (selectedBrand !== filters.make) {
-            onFilterChange({
-                make: selectedBrand,
-                model: '' // Reset model when brand changes
-            })
+        if (selectedBrand) {
+            setCurrentModel('')
         }
     }, [selectedBrand])
 
@@ -32,9 +42,9 @@ const CarsFilter = ({ filters, onFilterChange }) => {
             <div className={styles.filterBar}>
                 <div className={styles.selectGroup}>
                     <div className={styles.selectWrapper}>
-                        <input 
-                            type="text" 
-                            placeholder='Search by name...' 
+                        <input
+                            type="text"
+                            placeholder='Search by name...'
                             className={styles.input}
                             value={searchTitle}
                             onChange={(e) => setSearchTitle(e.target.value)}
@@ -42,9 +52,9 @@ const CarsFilter = ({ filters, onFilterChange }) => {
                         />
                     </div>
                     <div className={styles.selectWrapper}>
-                        <select 
-                            className={styles.select} 
-                            value={selectedBrand || ''} 
+                        <select
+                            className={styles.select}
+                            value={selectedBrand || ''}
                             onChange={(e) => setSelectedBrand(e.target.value)}
                         >
                             <option value="">Select Make</option>
@@ -57,10 +67,10 @@ const CarsFilter = ({ filters, onFilterChange }) => {
                         <ChevronDown className={styles.selectIcon} />
                     </div>
                     <div className={styles.selectWrapper}>
-                        <select 
-                            className={styles.select} 
-                            value={filters.model || ''} 
-                            onChange={(e) => onFilterChange({ model: e.target.value })}
+                        <select
+                            className={styles.select}
+                            value={currentModel}
+                            onChange={(e) => setCurrentModel(e.target.value)}
                         >
                             <option value="">Select Model</option>
                             {models.map(model => (
@@ -72,15 +82,17 @@ const CarsFilter = ({ filters, onFilterChange }) => {
                         <ChevronDown className={styles.selectIcon} />
                     </div>
                     <div className={styles.selectWrapper}>
-                        <select 
-                            className={styles.select} 
-                            value={filters.body || ''} 
-                            onChange={(e) => onFilterChange({ body: e.target.value })}
+                        <select
+                            className={styles.select}
+                            value={currentBody}
+                            onChange={(e) => setCurrentBody(e.target.value)}
                         >
                             <option value="">Select Body</option>
-                            <option value="sedan">Sedan</option>
-                            <option value="suv">SUV</option>
-                            <option value="coupe">Coupe</option>
+                            {categories.map(category => (
+                                <option key={category.id} value={category.id}>
+                                    {category.name}
+                                </option>
+                            ))}
                         </select>
                         <ChevronDown className={styles.selectIcon} />
                     </div>

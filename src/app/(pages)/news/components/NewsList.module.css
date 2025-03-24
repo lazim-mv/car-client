@@ -84,6 +84,8 @@
 
     .container h2 {
         margin-bottom: var(--20px);
+        /* text-align: left; */
+        width: 100%;
     }
 
     .cards {

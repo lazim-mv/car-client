@@ -1,8 +1,4 @@
 .container {
-    /* background: linear-gradient(to bottom, #ffffff, #ffe6cc);
-    padding: var(--padding-100) var(--padding-horizontal) ;
-    margin: 0 0 var(--padding-100) 0;
-    background: linear-gradient(to bottom, #ffffff 30%, #ffe6cc 70%, #ffffff 100%); */
     padding: var(--padding-100) var(--padding-horizontal) 0;
   }
   
@@ -111,7 +107,8 @@
     }
   
     .topSection h2 {
-      text-align: center;
+      text-align: left;
+      width: 100%;
     }
   
     .container1 {

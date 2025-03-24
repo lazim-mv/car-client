@@ -1,5 +1,5 @@
 "use client"
-import React, { useEffect } from 'react'
+import React from 'react'
 import styles from './CarDetails.module.css'
 import CarImages from './Componnets/CarImages'
 import CarTabs from './Componnets/CarTabs'
@@ -8,17 +8,10 @@ import CarOverview from './Componnets/CarOverview'
 import LoanComponent from './Componnets/LoanComponent'
 import CarLocation from './Componnets/CarLocation'
 import DealerInfo from './Componnets/DealerInfo'
-import AOS from 'aos'
-import 'aos/dist/aos.css'
+ 
 
 const Wrapper = ({ carData }) => {
-    useEffect(() => {
-        AOS.init({
-            duration: 800,
-            once: false,
-            easing: 'ease-in-out'
-        })
-    }, [])
+    
     return (
         <div className={styles.wrapper}>
             <div data-aos="fade-up">

@@ -1,5 +1,5 @@
 .aboutContainer {
-    padding: var(--padding-100) var(--padding-horizontal);
+    padding: var(--padding-100) var(--padding-horizontal) 0;
 }
 
 .missionContainer {
@@ -70,13 +70,20 @@
 
 .serviceCard:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 var(--4px) var(--6px) rgba(0, 0, 0, 0.1);
+
 }
 
-.serviceIcon {
+.serviceIconContainer {
     font-size: var(--font-30);
     color: var(--secondary-color);
     margin-bottom: var(--16px);
+}
+
+.serviceIcon {
+    width: var(--40px);
+    height: var(--40px);
+    color: var(--secondary-color);
 }
 
 .serviceCard h4 {
@@ -124,7 +131,7 @@
     }
 
     .missionContainer {
-        margin-top: 20vw;
+        margin-top: 16vw;
     }
 
     .missionContainer,
@@ -133,13 +140,27 @@
         text-align: center;
     }
 
+    .experienceContainer {
+        margin-top: var(--padding-60);
+    }
+
     .missionStats {
         justify-content: center;
         flex-wrap: wrap;
     }
 
+    .servicesContainer {
+        margin-top: var(--padding-60);
+    }
+
     .servicesGrid {
         grid-template-columns: 1fr;
+    }
+
+    .serviceIcon {
+        width: var(--40px);
+        height: var(--40px);
+        color: var(--secondary-color);
     }
 
     .experienceFeatures {

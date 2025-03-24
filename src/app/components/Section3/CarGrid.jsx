@@ -8,13 +8,9 @@ import ImagePreview from '../ImagePreview/ImagePreview'
 import { formatCurrency } from '../../utils/formatCurrency'
 import { useRouter } from 'next/navigation'
 
-const CarGrid = ({ filteredCars, loading }) => {
+const CarGrid = ({ filteredCars }) => {
   const router = useRouter();
   const [previewImage, setPreviewImage] = React.useState({ index: null, url: null });
-
-  if (loading) {
-    return <div>Loading...</div>
-  }
 
   return (
     <div className={styles.row2}>
@@ -37,14 +33,16 @@ const CarGrid = ({ filteredCars, loading }) => {
             </div>
           </div>
           <div className={styles.carInfo}>
-            <p className={styles.category}>{car.category}</p>
-            <h3 className={styles.carName}>{car.name}</h3>
-            <div className={styles.carSpecs}>
-              <span><GitMerge className={styles.specIcon} />{car.mileage}</span>
-              <span><Fuel className={styles.specIcon} /> {car.fueltype}</span>
-              <span><Gauge className={styles.specIcon} /> {car.transmission}</span>
+            <div className={styles.topInfo}>
+              <p className={styles.category}>{car.category}</p>
+              <h3 className={styles.carName}>{car.name}</h3>
+              <div className={styles.carSpecs}>
+                <span><GitMerge className={styles.specIcon} />{car.mileage}</span>
+                <span><Fuel className={styles.specIcon} /> {car.fueltype}</span>
+                <span><Gauge className={styles.specIcon} /> {car.transmission}</span>
+              </div>
+              <h4 className={styles.carPrice}>{formatCurrency(car.price)}</h4>
             </div>
-            <h4 className={styles.carPrice}>{formatCurrency(car.price)}</h4>
             <div className={styles.bottom}>
               <div className={styles.viewCarButton}
                 onClick={() => router.push(`/Cars/${car.carId}`)}>

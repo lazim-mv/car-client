@@ -133,6 +133,7 @@ button {
 .page {
   animation: fadeInUp 0.6s ease forwards;
 }
+
 .customOverlay {
   pointer-events: auto;
 }
@@ -218,9 +219,12 @@ button {
     --24px: 6.40vw;
     --30px: 8.00vw;
     --40px: 10.67vw;
+    --50px: 13.33vw;
     --70px: 18.67vw;
     --80px: 21.33vw;
     --100px: 26.67vw;
+
+    --icon-size: 4.40vw;
   }
 
   h1 {
@@ -248,4 +252,5 @@ button {
   a {
     font-size: var(--font-16);
   }
+  
 }

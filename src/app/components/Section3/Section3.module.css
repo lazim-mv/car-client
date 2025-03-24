@@ -42,11 +42,13 @@
     gap: var(--30px);
     width: 100%;
     padding-top: var(--padding-36);
+    min-height: 51.19047619047619vw;
 }
 
 .carCard {
     width: calc(50% - var(--30px));
     width: 48.7%;
+    height: max-content;
     display: flex;
 
     position: relative;
@@ -230,6 +232,11 @@
         justify-content: center;
     }
 
+    .row1 h2 {
+        text-align: left;
+        width: 100%;
+    }
+
     .tabs {
         overflow-x: scroll;
         padding-top: 0;
@@ -262,14 +269,30 @@
         padding: var(--10px);
     }
 
+    .topInfo {
+        min-height: 59.199999999999996vw;
+        padding-bottom: var(--20px);
+        border-bottom: var(--1px) solid var(--border-color);
+    }
+
+    .carPrice {
+        padding-bottom: 0;
+        border-bottom: 0;
+    }
+
     .carName {
         font-size: var(--font-20);
+        height: var(--50px);
+        overflow: hidden;
         /* min-height: 13.33vw; */
     }
 
     .carSpecs {
         flex-wrap: wrap;
         justify-content: flex-start;
+        height: 24.546666666666667vw;
+        overflow: hidden;
+        flex-direction: column;
     }
 
     .icon {

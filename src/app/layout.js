@@ -5,6 +5,7 @@ import Header from "./components/header/Header";
 import Footer from "./components/Footer/Footer";
 import MobileHeader from "./components/header/MobileHeader";
 import SmoothScrolling from "./utils/SmoothScrolling";
+import AosProvider from "./utils/AosProvider"
 
 
 const sora = Sora({ subsets: ["latin"] });
@@ -21,10 +22,12 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={`page page-enter ${sora.className}`}>
         <SmoothScrolling>
-          <Header />
-          <MobileHeader />
-          {children}
-          <Footer />
+          <AosProvider>
+            <Header />
+            <MobileHeader />
+            {children}
+            <Footer />
+          </AosProvider>
         </SmoothScrolling>
 
       </body>

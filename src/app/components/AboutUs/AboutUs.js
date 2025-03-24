@@ -1,18 +1,10 @@
 "use client";
-import React, { useEffect } from 'react';
+import React from 'react';
 import Image from 'next/image';
 import styles from './aboutUs.module.css';
-import AOS from 'aos';
-import 'aos/dist/aos.css';
+
 
 const AboutUs = () => {
-  useEffect(() => {
-    AOS.init({
-      duration: 800,
-      once: false,
-      easing: 'ease-in-out'
-    });
-  }, []);
 
   return (
     <div className={styles.aboutContainer}>

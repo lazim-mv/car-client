@@ -30,7 +30,7 @@
     background: white;
     border-radius: calc(100vw * 14/1512);
     padding: calc(100vw * 30/1512);
-    box-shadow: 0 calc(100vw * 4/1512) calc(100vw * 6/1512) rgba(0, 0, 0, 0.1);
+    box-shadow: 0 var(--4px) var(--6px) rgba(0, 0, 0, 0.1);
 }
 
 .calculatorCard h2 {

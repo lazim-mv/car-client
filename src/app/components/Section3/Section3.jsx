@@ -3,10 +3,10 @@ import React, { useState, useEffect } from 'react'
 import styles from './Section3.module.css'
 import Button2 from '../buttons/button2/Button2'
 import ImagePreview from '../ImagePreview/ImagePreview'
-import AOS from 'aos'
-import 'aos/dist/aos.css'
+
 import CarGrid from './CarGrid'
 import { useWindowSize } from '../../utils/windowSize'
+import Link from 'next/link'
 
 const Section3 = ({ carData, loading }) => {
   const [activeTab, setActiveTab] = useState('All Cars');
@@ -14,13 +14,6 @@ const Section3 = ({ carData, loading }) => {
   const [categories, setCategories] = useState([]);
   const { windowSize, isSmallScreen } = useWindowSize();
 
-  useEffect(() => {
-    AOS.init({
-      duration: 800,
-      once: false,
-      easing: 'ease-in-out'
-    })
-  }, [])
 
   const defaultData = [
     {
@@ -99,7 +92,11 @@ const Section3 = ({ carData, loading }) => {
     <div className={styles.container}>
       <div className={styles.row1} data-aos="fade-up">
         <h2>Newest Listings</h2>
-        {!isSmallScreen && <Button2 />}
+        {!isSmallScreen &&
+          <Link href="/cars-filter">
+            <Button2 />
+          </Link>
+        }
       </div>
       <div className={styles.tabs} data-aos="fade-up" data-aos-delay="100">
         {activeData.map((tab) => (
@@ -112,13 +109,14 @@ const Section3 = ({ carData, loading }) => {
           </div>
         ))}
       </div>
-      <div className={styles.row2}>
-        <CarGrid filteredCars={filteredCars} loading={loading} />
-      </div>
+      {filteredCars && filteredCars?.length === 0 ? <p>No Data</p> : loading ? <p>Loading...</p> :
+        <CarGrid filteredCars={filteredCars} />
+      }
       {isSmallScreen && (
-        <div className={styles.mobileButton}>
+
+        <Link href="/cars-filter" className={styles.mobileButton}>
           <Button2 />
-        </div>
+        </Link>
       )}
       {previewImage.url && (
         <ImagePreview

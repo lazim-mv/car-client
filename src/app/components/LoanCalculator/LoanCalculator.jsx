@@ -1,18 +1,8 @@
 "use client"
 import React, { useState, useEffect } from 'react';
 import styles from './LoanCalculator.module.css';
-import AOS from 'aos'
-import 'aos/dist/aos.css'
 
 const LoanCalculator = () => {
-
-    useEffect(() => {
-        AOS.init({
-            duration: 800,
-            once: false,
-            easing: 'ease-in-out'
-        })
-    }, [])
 
     const [formData, setFormData] = useState({
         totalPrice: 100,

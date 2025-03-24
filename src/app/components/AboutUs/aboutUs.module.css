@@ -72,21 +72,21 @@
 
     .textContent h2 {
         margin-bottom: var(--20px);
-        text-align: center;
+        text-align: left;
     }
 
     .description {
-        text-align: center;
+        text-align: left;
     }
 
     .mission {
         margin-bottom: var(--20px);
-        text-align: center;
+        text-align: left;
     }
 
     .trust {
         font-size: var(--font-18);
         margin-top: var(--20px);
-        text-align: center;
+        text-align: left;
     }
 }

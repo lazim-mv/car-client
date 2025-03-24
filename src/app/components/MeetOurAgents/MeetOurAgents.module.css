@@ -107,4 +107,14 @@
   .agentInfo h4 {
     font-size: var(--font-18);
   }
+
+  .socialLinks {
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .socialButton{
+    padding: var(--8px);
+  }
 }

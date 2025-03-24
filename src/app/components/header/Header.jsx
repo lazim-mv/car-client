@@ -52,9 +52,9 @@ const Header = () => {
                 <Search className={styles.icon} />
                 <User2 className={styles.icon} />
             </div>
-            <div className={styles.icons}>
+            <Link href="/contact" className={styles.icons}>
                 <Button title="Contact" color="var(--secondary-color)" />
-            </div>
+            </Link>
         </div>
     )
 }

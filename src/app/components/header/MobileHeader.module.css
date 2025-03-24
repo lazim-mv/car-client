@@ -80,6 +80,11 @@
         border-bottom: var(--1px) solid var(--border-color);
     }
 
+    .navLink:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
+    }
+
     .navLink:hover {
         color: var(--secondary-color);
     }

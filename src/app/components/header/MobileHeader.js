@@ -46,11 +46,11 @@ const MobileHeader = () => {
             About
           </Link>
           <Link
-            href="/buy-car"
+            href="/cars-filter"
             className={styles.navLink}
             onClick={toggleMenu}
           >
-            Buy Car
+            Buy a car
           </Link>
           <Link
             href="/news"
@@ -59,13 +59,13 @@ const MobileHeader = () => {
           >
             News
           </Link>
-          {/* <Link
+          <Link
             href="/contact"
             className={styles.navLink}
             onClick={toggleMenu}
           >
-            Contact
-          </Link> */}
+            Connect with us
+          </Link>
         </nav>
 
         <div className={styles.contactSection}>

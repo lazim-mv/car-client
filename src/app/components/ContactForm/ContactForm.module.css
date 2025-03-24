@@ -1,0 +1,112 @@
+.container {
+    position: relative;
+    padding: var(--padding-100) var(--padding-horizontal);
+    overflow: hidden;
+    height: 100vh;
+    background: url('/contact/1.jpg') no-repeat center center;
+    background-size: cover;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: var(--14px);
+}
+
+.content {
+    position: relative;
+    z-index: 1;
+    width: 37.56613756613756vw;
+    margin: 0 auto;
+}
+
+.heading {
+    color: var(--text-light-color);
+    text-align: center;
+    margin-bottom: var(--30px);
+}
+
+.content p {
+    color: var(--text-light-color);
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--20px);
+    background: var(--primary-light-color);
+    padding: var(--30px);
+    border-radius: var(--14px);
+    box-shadow: 0 var(--4px) var(--24px) rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.inputGroup {
+    display: flex;
+    flex-direction: column;
+    gap: var(--8px);
+}
+
+.label {
+    font-size: var(--font-14);
+    color: var(--text-dark-color);
+    font-weight: 500;
+}
+
+.input,
+.textarea {
+    width: 100%;
+    padding: var(--16px);
+    border: var(--1px) solid var(--border-color);
+    border-radius: var(--14px);
+    font-size: var(--font-14);
+    color: var(--text-dark-color);
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.9);
+}
+
+.input:focus,
+.textarea:focus {
+    outline: none;
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 0 var(--2px) rgba(252, 109, 0, 0.1);
+    background: white;
+}
+
+.textarea {
+    min-height: 10.6vw;
+    resize: vertical;
+}
+
+.button {
+    background: var(--secondary-color);
+    color: var(--text-light-color);
+    padding: var(--button-padding);
+    border: none;
+    border-radius: var(--14px);
+    font-size: var(--font-16);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.button:hover {
+    background: var(--third-color);
+    transform: translateY(-2px);
+    box-shadow: 0 var(--4px) var(--16px) rgba(0, 0, 0, 0.2);
+}
+
+@media only screen and (max-width: 767px) {
+    .content {
+        width: 100%;
+    }
+
+    .form {
+        padding: var(--20px);
+    }
+
+    .button {
+        width: 100%;
+        padding: var(--12px);
+    }
+}

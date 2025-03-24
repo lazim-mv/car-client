@@ -1,63 +1,64 @@
-'use client'
-import { useState, useEffect } from 'react'
-import styles from './components/CarsFilter/CarsFilter.module.css'
+import { supabase } from "../../utils/supabaseClient"
 import CarsFilter from "./components/CarsFilter/CarsFilter"
 import AllCars from './components/CarsGrid/AllCars'
 
+async function getCars(searchParams) {
+    try {
+        console.log('Search Params:', searchParams) // Debug log
 
-const CarsFilterPage = () => {
-    const [cars, setCars] = useState([])
-    const [loading, setLoading] = useState(true)
-    const [filters, setFilters] = useState({
-        make: '',
-        model: '',
-        body: ''
-    })
+        const query = supabase
+            .from('car')
+            .select(`
+                *,
+                car_images!inner (*),
+                car_specifications (
+                    mileage,
+                    geartype,
+                    fueltype
+                ),
+                carbrand:brandid(name),
+                carmodel:modelid(name),
+                carcategory:categoryid(*)
+            `)
+            .eq('status', 'Available')
 
-    const fetchCars = async (filterParams = {}) => {
-        try {
-            setLoading(true)
-            const queryParams = new URLSearchParams(filterParams)
-            const baseUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000"
-            const response = await fetch(`${baseUrl}/api/carsfilter?${queryParams}`)
-            
-            if (!response.ok) {
-                throw new Error('Failed to fetch cars')
-            }
-
-            const data = await response.json()
-            setCars(data)
-        } catch (error) {
-            console.error('Error:', error)
-            setCars([])
-        } finally {
-            setLoading(false)
+        // 🔍 Filter based on category ID from searchParams
+        if (searchParams?.body) {
+            query.contains('carcategory.car_ids', [parseInt(searchParams.body)]) 
         }
-    }
+        if (searchParams?.make) {
+            query.eq('brandid', parseInt(searchParams.make))
+        }
+        if (searchParams?.model) {
+            query.eq('modelid', parseInt(searchParams.model))
+        }
+        if (searchParams?.title) {
+            query.ilike('title', `%${searchParams.title}%`)
+        }
 
-    const handleFilterChange = (newFilters) => {
-        setFilters(prev => ({
-            ...prev,
-            ...newFilters
-        }))
-    }
+        const { data, error } = await query
+        console.log('Query Result:', data, error) // Debug log
 
-    useEffect(() => {
-        fetchCars(filters)
-    }, [filters])
+        if (error) throw error
+        return data
+    } catch (error) {
+        console.error('Error:', error)
+        return []
+    }
+}
+
+// 🚀 Server Component
+export default async function CarsFilterPage({ searchParams }) {
+    const cars = await getCars(searchParams) // Server-side fetch
+    console.log(cars, "carsPageData")
 
     return (
-        <div className={styles.mainContainer}>
-            <CarsFilter 
-                filters={filters} 
-                onFilterChange={handleFilterChange}
-            />
-            <AllCars 
-                cars={cars} 
-                loading={loading}
+        <div>
+            <CarsFilter />
+            <AllCars
+                cars={cars}
+                loading={false}
             />
         </div>
     )
 }
-
-export default CarsFilterPage

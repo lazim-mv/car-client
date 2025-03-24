@@ -1,13 +1,13 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import styles from "./Section4.module.css";
 
 import { useWindowSize } from "../../utils/windowSize";
 import Button2 from "../buttons/button2/Button2";
 import { ArrowUpRight } from "lucide-react";
-import AOS from 'aos'
-import 'aos/dist/aos.css'
+import Link from "next/link";
+
 
 const container2Data = [
     {
@@ -39,17 +39,7 @@ const container2Data = [
 
 const Section4 = () => {
     const cardData = container2Data;
-
-    useEffect(() => {
-        AOS.init({
-            duration: 800,
-            once: false,
-            easing: 'ease-in-out'
-        })
-    }, [])
-
     const { windowSize, isSmallScreen } = useWindowSize();
-
     const initialVisibleState = Array(cardData.length).fill(false);
     initialVisibleState[0] = true;
     const [answerVisible, setAnswerVisible] = useState(initialVisibleState);
@@ -70,7 +60,9 @@ const Section4 = () => {
                 </div>
 
                 {!isSmallScreen && <div className={styles.chatButton}>
-                    <Button2 title="Chat" />
+                    <Link href="/contact">
+                        <Button2 title="Chat" />
+                    </Link>
                 </div>}
             </div>
 
@@ -114,7 +106,9 @@ const Section4 = () => {
                 ))}
             </div>
             {isSmallScreen && <div className={styles.chatButton}>
-                <Button2 title="Chat" />
+                <Link href="/contact">
+                    <Button2 title="Chat" />
+                </Link>
             </div>}
         </div>
     );

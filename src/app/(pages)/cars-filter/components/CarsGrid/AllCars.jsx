@@ -1,47 +1,31 @@
 'use client'
-import React, { useEffect } from 'react'
+import React from 'react'
 import styles from './AllCars.module.css'
 import Image from 'next/image'
 import { formatCurrency } from '../../../../utils/formatCurrency'
 import { Heart, GitCompareArrows, Image as ImageGallery } from 'lucide-react'
-import Link from 'next/link'
 import Button2 from '../../../../components/buttons/button2/Button2'
 import { useRouter } from 'next/navigation'
-import { ChartArea } from 'lucide-react'
-import { MessageCircleMore } from 'lucide-react'
 import { GitMerge } from 'lucide-react'
 import { Fuel } from 'lucide-react'
 import { Gauge } from 'lucide-react'
-import AOS from 'aos'
-import 'aos/dist/aos.css'
+
 import ImagePreview from '../../../../components/ImagePreview/ImagePreview'
 
 const CarGrid = ({ cars, loading }) => {
     const router = useRouter();
-    const [previewImage, setPreviewImage] = React.useState({ index: null, url: null })
-
-    useEffect(() => {
-        AOS.init({
-            duration: 800,
-            once: false,
-            easing: 'ease-in-out'
-        })
-    }, [])
-
-    // if (loading || !cars) {
-    //     return <div>Loading...</div>
-    // }
+    const [previewImage, setPreviewImage] = React.useState({ index: null, url: null });
 
     return (
         <div className={styles.grid}>
-            {cars.length === 0 && <p>No cars found.</p>}
+            {cars.length === 0 && !loading && <p>No cars found.</p>}
             {loading ? <p>Loading...</p> :
                 <>
                     {cars.map((car, index) => (
                         <div key={car.carid} className={styles.carCard} data-aos="fade-up" data-aos-delay={index * 100}>
                             <div className={styles.imageContainer}>
                                 <Image
-                                    src={car.image || '/placeholder-car.jpg'}
+                                    src={car?.car_images?.image || '/placeholder-car.jpg'}
                                     alt={car.title}
                                     width={300}
                                     height={200}
@@ -61,12 +45,12 @@ const CarGrid = ({ cars, loading }) => {
                                 </div>
                             </div>
                             <div className={styles.carInfo}>
-                                <p className={styles.category}>{car?.carcategory.name}</p>
+                                <p className={styles.category}>{car?.carcategory?.name}</p>
                                 <h3 className={styles.carName}>{car?.title}</h3>
                                 <div className={styles.carSpecs}>
-                                    <span><GitMerge className={styles.specIcon} />{car?.specifications?.mileage}</span>
-                                    <span><Fuel className={styles.specIcon} /> {car?.specifications?.fueltype}</span>
-                                    <span><Gauge className={styles.specIcon} /> {car?.specifications?.geartype}</span>
+                                    <span><GitMerge className={styles.specIcon} />{car?.car_specifications?.mileage}</span>
+                                    <span><Fuel className={styles.specIcon} /> {car?.car_specifications?.fueltype}</span>
+                                    <span><Gauge className={styles.specIcon} /> {car?.car_specifications?.geartype}</span>
                                 </div>
                                 <h4 className={styles.carPrice}>{formatCurrency(car?.price)}</h4>
                                 <div className={styles.bottom}>
@@ -80,9 +64,9 @@ const CarGrid = ({ cars, loading }) => {
                                             onClick={() => setPreviewImage({
                                                 index,
                                                 url: car?.image,
-                                                images: [car?.image, ...(car?.additionalImages || [])],
+                                                images: [car?.image, ...(car?.car_images?.additionalimages || [])],
                                             })}
-                                        /> {car?.additionalImages?.length || 0}
+                                        /> {car?.car_images?.additionalimages?.length || 0}
                                     </div>
                                 </div>
                             </div>

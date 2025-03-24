@@ -79,7 +79,7 @@
     visibility: hidden;
     transform: translateY(10px);
     transition: all 0.3s ease;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 var(--4px) var(--6px) rgba(0, 0, 0, 0.1);
     z-index: 9999;
 }
 
@@ -114,16 +114,14 @@
     color: var(--secondary-color);
 }
 
-.lists .active{
-    
-}
+.lists .active {}
 
 .icon:hover {
     color: var(--secondary-color);
 }
 
 @media only screen and (max-width: 767px) {
-    .desktopHeader{
+    .desktopHeader {
         display: none;
     }
 }

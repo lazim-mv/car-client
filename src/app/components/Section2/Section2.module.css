@@ -17,6 +17,8 @@
     width: 100%;
     display: flex;
     gap: var(--30px);
+    padding-bottom: 1.26vw;
+    border-bottom: var(--1px) solid var(--border-color);
 }
 
 .card {
@@ -79,7 +81,7 @@
 
 
     .row1 h2 {
-        text-align: center;
+        text-align: left;
         width: 100%;
     }
 
@@ -89,16 +91,13 @@
 
     .row2 {
         padding-top: var(--20px);
-    }
-
-    .row2 {
+        padding-bottom: var(--10px);
         width: 100%;
         overflow-x: scroll;
-        overflow-y: hidden;
+        /* overflow-y: hidden; */
         /* flex-wrap: wrap; */
         gap: var(--20px);
-        height: 43.73vw;
-        padding-bottom: var(--10px);
+        min-height: 44.800000000000004vw;
     }
 
     .card {

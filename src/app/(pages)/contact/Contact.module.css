@@ -1,0 +1,28 @@
+.container {
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: var(--padding-100) var(--padding-horizontal);
+}
+
+.content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--30px);
+    align-items: start;
+}
+
+.formSection,
+.mapSection {
+    width: 100%;
+}
+
+@media (max-width: 768px) {
+    .content {
+        grid-template-columns: 1fr;
+    }
+
+    .container {
+        padding: var(--100px) var(--padding-horizontal);
+    }
+}

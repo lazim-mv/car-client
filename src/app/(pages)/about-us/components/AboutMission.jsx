@@ -2,17 +2,9 @@
 
 import styles from './About.module.css';
 import Image from 'next/image';
-import AOS from 'aos';
-import 'aos/dist/aos.css';
-import { useEffect } from 'react';
 
 const AboutMission = () => {
-    useEffect(() => {
-        AOS.init({
-            duration: 1000,
-            once: true
-        });
-    }, []);
+ 
 
     return (
         <div className={styles.missionContainer}>

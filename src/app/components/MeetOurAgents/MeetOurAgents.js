@@ -3,9 +3,7 @@
 import { Mail, Phone, Facebook, Twitter, Instagram, Linkedin } from 'lucide-react';
 import styles from './MeetOurAgents.module.css';
 import Image from 'next/image';
-import AOS from 'aos'
-import 'aos/dist/aos.css'
-import { useEffect } from 'react';
+ 
 const agents = [
   {
     name: 'Ronal Son',
@@ -43,14 +41,6 @@ const socialIcons = {
 };
 
 export default function MeetOurAgents() {
-
-  useEffect(() => {
-    AOS.init({
-      duration: 800,
-      once: false,
-      easing: 'ease-in-out'
-    })
-  }, [])
 
   return (
     <section className={styles.agentsSection}>

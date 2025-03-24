@@ -8,7 +8,7 @@
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     overflow: hidden;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 var(--4px) var(--6px) rgba(0, 0, 0, 0.1);
     background: transparent;
     border: 1px solid var(--secondary-color);
     cursor: pointer;
