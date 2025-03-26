@@ -5,7 +5,7 @@ import AOS from 'aos';
 const AosProvider = ({ children }) => {
     useEffect(() => {
         AOS.init({
-            duration: 800,
+            duration: 600,
             once: false,
             easing: 'ease-in-out'
         });

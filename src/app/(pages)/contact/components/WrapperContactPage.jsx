@@ -7,10 +7,10 @@ const WrapperContactPage = () => {
     return (
         <div className={styles.container}>
             <div className={styles.content}>
-                <div className={styles.formSection}>
+                <div className={styles.formSection} data-aos="fade-up">
                     <ContactForm />
                 </div>
-                <div className={styles.mapSection}>
+                <div className={styles.mapSection} data-aos="fade-up" data-aos-delay="50">
                     <ContactMap />
                 </div>
             </div>

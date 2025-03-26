@@ -4,16 +4,16 @@ import Pagination from './components/Pagination/Pagination'
 
 async function getCars(searchParams) {
     try {
-        const page = searchParams?.page || 1
-        const limit = 9
         const queryParams = new URLSearchParams({
             ...searchParams,
-            page,
-            limit
+            page: searchParams?.page || 1,
+            limit: 9
         })
         const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000'
         const response = await fetch(`${baseUrl}/api/carsfilter?${queryParams}`, {
-            cache: 'no-store'
+            next: { 
+                revalidate: 1800 
+            }
         })
 
         if (!response.ok) {
@@ -21,7 +21,6 @@ async function getCars(searchParams) {
         }
 
         const data = await response.json()
-        // console.log('API Response:', data) // Debug log
         return data
     } catch (error) {
         console.error('Error:', error)
@@ -39,7 +38,7 @@ async function getCars(searchParams) {
 
 export default async function CarsFilterPage({ searchParams }) {
     const { cars = [], pagination = { page: 1, totalPages: 1 } } = await getCars(searchParams)
-    console.log(cars, "cars")
+    console.log(cars, "cars count test")
     return (
         <div>
             <CarsFilter />

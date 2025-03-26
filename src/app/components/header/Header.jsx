@@ -1,12 +1,12 @@
 "use client";
 import React, { useState } from 'react'
 import styles from "./Header.module.css"
-import Image from 'next/image'
 import { Search } from 'lucide-react'
 import { User2 } from 'lucide-react'
 import { ChevronDown } from 'lucide-react'
 import Button from '../buttons/Button'
 import Link from 'next/link'
+import Logo from '../Logo/Logo'
 
 const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -17,12 +17,7 @@ const Header = () => {
     return (
         <div className={styles.desktopHeader}>
             <div className={styles.logoContainer}>
-                <Image
-                    width={225}
-                    height={45}
-                    src="/header/logoBlack.png"
-                    alt='logo'
-                />
+                    <Logo width={225} height={45} color="#000000" />
             </div>
             <ul className={styles.lists}>
                 <Link href="/"><li>Home </li></Link>

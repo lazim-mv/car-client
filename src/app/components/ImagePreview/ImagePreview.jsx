@@ -15,7 +15,8 @@ const ImagePreview = ({ images, onClose, currentIndex: initialIndex }) => {
     console.log(images, "images")
 
     useEffect(() => {
-        setMounted(true)
+        setMounted(true);
+        setIsLoading(true); 
 
         // Calculate viewport position and dimensions
         const viewportTop = window.scrollY
@@ -55,7 +56,6 @@ const ImagePreview = ({ images, onClose, currentIndex: initialIndex }) => {
         }
     }, [])
 
-    // Set loading state to true when changing images
     useEffect(() => {
         setIsLoading(true);
     }, [currentIndex]);
@@ -97,17 +97,22 @@ const ImagePreview = ({ images, onClose, currentIndex: initialIndex }) => {
         setIsLoading(false);
     };
 
+    const handleClose = () => {
+        onClose(null);
+        setCurrentIndex(0);
+    }
+
     // Use createPortal to render at document body level
     return createPortal(
         <div
             style={dynamicOverlayStyle}
-            onClick={() => onClose(null)}
+            onClick={handleClose}
             ref={overlayRef}
         >
             <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
                 <button
                     className={styles.closeButton}
-                    onClick={() => onClose(null)}
+                    onClick={handleClose}
                     type="button"
                 >
                     <X size={24} />

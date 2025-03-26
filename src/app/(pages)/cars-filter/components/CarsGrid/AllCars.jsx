@@ -58,15 +58,24 @@ const CarGrid = ({ cars, loading }) => {
                                         onClick={() => router.push(`/Cars/${car.carid}`)}>
                                         <Button2 title='View' icon={false} />
                                     </div>
-                                    <div className={styles.imageGallery}>
+                                    <div
+                                        className={styles.imageGallery}
+                                        style={{ position: "relative", zIndex: "100" }}
+                                        onClick={() => {
+                                            // console.log("Clicked");
+                                            // console.log("car.image:", car?.car_images?.image);
+                                            // console.log("additionalimages:", car?.car_images?.additionalimages);
+
+                                            setPreviewImage({
+                                                index,
+                                                url: car?.car_images?.image,
+                                                images: [car?.car_images?.image, ...(car?.car_images?.additionalimages || [])],
+                                            });
+                                        }}
+                                    >
                                         <ImageGallery
                                             className="icon"
-                                            onClick={() => setPreviewImage({
-                                                index,
-                                                url: car?.image,
-                                                images: [car?.image, ...(car?.car_images?.additionalimages || [])],
-                                            })}
-                                        /> {car?.car_images?.additionalimages?.length || 0}
+                                        /> {car?.car_images?.additionalimages?.length + 1 || 0}
                                     </div>
                                 </div>
                             </div>
@@ -78,7 +87,7 @@ const CarGrid = ({ cars, loading }) => {
             {previewImage.url && (
                 <ImagePreview
                     images={previewImage.images}
-                    currentIndex={previewImage.index}
+                    currentIndex={0}
                     onClose={(newIndex) => {
                         if (newIndex === null) {
                             setPreviewImage({ index: null, url: null, images: [] })

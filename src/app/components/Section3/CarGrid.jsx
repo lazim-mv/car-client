@@ -48,15 +48,15 @@ const CarGrid = ({ filteredCars }) => {
                 onClick={() => router.push(`/Cars/${car.carId}`)}>
                 <Button2 title='View' icon={false} />
               </div>
-              <div className={styles.imageGallery}>
+              <div className={styles.imageGallery}
+                onClick={() => setPreviewImage({
+                  index: 0,
+                  url: car.image,
+                  images: [car.image, ...(car.additionalImage || [])]
+                })}>
                 <ImageGallery
                   className={styles.icon}
-                  onClick={() => setPreviewImage({
-                    index: 0,
-                    url: car.image,
-                    images: [car.image, ...(car.additionalImage || [])]
-                  })}
-                /> {car.additionalImage?.length || 0}
+                /> {car.additionalImage?.length + 1 || 0}
               </div>
             </div>
           </div>
@@ -65,7 +65,7 @@ const CarGrid = ({ filteredCars }) => {
       {previewImage.url && (
         <ImagePreview
           images={previewImage.images}
-          currentIndex={previewImage.index}
+          currentIndex={0}
           onClose={(newIndex) => {
             if (newIndex === null) {
               setPreviewImage({ index: null, url: null, images: [] })

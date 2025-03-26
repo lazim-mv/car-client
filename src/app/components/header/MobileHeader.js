@@ -1,9 +1,9 @@
 'use client';
 
 import { useState } from 'react';
-import Image from 'next/image';
 import Link from 'next/link';
 import { Menu, X } from 'lucide-react';
+import Logo from '../Logo/Logo';
 import styles from './MobileHeader.module.css';
 
 const MobileHeader = () => {
@@ -17,7 +17,7 @@ const MobileHeader = () => {
     <header className={styles.mobileHeader}>
       <div className={styles.headerContent}>
         <Link href="/" className={styles.logoContainer}>
-          <Image src="/header/logoBlack.png" alt="AutoDeal Logo" width={120} height={40} />
+          <Logo width={120} height={40} color="#000000" />
         </Link>
         <button
           onClick={toggleMenu}

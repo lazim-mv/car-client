@@ -16,7 +16,12 @@
     margin-bottom: var(--20px);
 }
 
-.missionContent p {}
+.aboutContainer p {
+    font-size: var(--font-16);
+    line-height: 1.6;
+    color: var(--text-desc-color);
+    /* margin-bottom: var(--24px); */
+}
 
 .missionStats {
     margin-top: var(--30px);
@@ -39,7 +44,7 @@
 
 .image {
     width: 100%;
-    height: 30.682539682539684vw;
+    height: 40.68254vw;
     object-fit: cover;
     border-radius: var(--16px);
 }

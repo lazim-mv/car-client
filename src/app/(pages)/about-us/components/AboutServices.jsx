@@ -32,10 +32,10 @@ const AboutServices = () => {
     return (
         <div className={styles.servicesContainer}>
             <h2 data-aos="fade-up">Our Services</h2>
-            <p className={styles.servicesDescription} data-aos="fade-up" data-aos-delay="200">We provide comprehensive car buying solutions tailored to your needs</p>
+            <p className={styles.servicesDescription} data-aos="fade-up" data-aos-delay="50">We provide comprehensive car buying solutions tailored to your needs</p>
             <div className={styles.servicesGrid}>
                 {services.map((service, index) => (
-                    <div key={index} className={styles.serviceCard} data-aos="fade-up" data-aos-delay={300 + (index * 100)}>
+                    <div key={index} className={styles.serviceCard} data-aos="fade-up" data-aos-delay={100 + (index * 100)}>
                         <div className={styles.serviceIconContainer}>{service.icon}</div>
                         <h4>{service.title}</h4>
                         <p>{service.description}</p>

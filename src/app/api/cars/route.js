@@ -3,42 +3,36 @@ import { NextResponse } from "next/server";
 
 export async function GET() {
     try {
+        // Step 1: Fetch all categories
         const { data: categories, error: categoryError } = await supabase
             .from("carcategory")
-            .select("id, name, image, car_ids");
+            .select("id, name, image");
 
         if (categoryError) throw new Error(`Supabase Error: ${categoryError.message}`);
         if (!categories || categories.length === 0) throw new Error("No categories found");
 
-        // Step 2: Fetch all cars in one query using car_ids
-        const allCarIds = categories
-            .flatMap((cat) => cat.car_ids) // Collect all car IDs
-            .filter((id) => id !== undefined && id !== null);
+        // Step 2: Fetch cars with category details in one query
+        const { data: cars, error: carError } = await supabase
+            .from("car")
+            .select(`
+                carid,
+                title,
+                year,
+                price,
+                categoryid,
+                car_specifications (
+                    mileage,
+                    geartype,
+                    fueltype
+                ),
+                car_images (
+                    image,
+                    additionalimages
+                )
+            `);
 
-        let cars = [];
-        if (allCarIds.length > 0) {
-            const { data: carData, error: carError } = await supabase
-                .from("car")
-                .select(`
-                    carid,
-                    title,
-                    year,
-                    price,
-                    car_specifications (
-                        mileage,
-                        geartype,
-                        fueltype
-                    ),
-                    car_images (
-                        image,
-                        additionalimages
-                    )
-                `)
-                .in("carid", allCarIds); // Fetch only relevant cars
-
-            if (carError) throw new Error(`Supabase Error: ${carError.message}`);
-            cars = carData || [];
-        }
+        if (carError) throw new Error(`Supabase Error: ${carError.message}`);
+        if (!cars) throw new Error("No cars found");
 
         // Step 3: Map cars to their respective categories
         const transformedData = categories.map((category) => ({
@@ -46,7 +40,7 @@ export async function GET() {
             tabName: category.name,
             tabImage: category.image,
             carData: cars
-                .filter((car) => category.car_ids.includes(car.carid)) // Match cars by ID
+                .filter((car) => car.categoryid === category.id) // Match cars by category ID
                 .map((car) => ({
                     carId: car.carid,
                     category: category.name,
@@ -60,7 +54,6 @@ export async function GET() {
                     additionalImage: car.car_images?.additionalimages || [],
                 })),
         }));
-
 
         return NextResponse.json(transformedData, { status: 200 });
     } catch (error) {

@@ -118,23 +118,7 @@ const Section3 = ({ carData, loading }) => {
           <Button2 />
         </Link>
       )}
-      {previewImage.url && (
-        <ImagePreview
-          imageUrl={previewImage.url}
-          images={filteredCars.map(car => car.image)}
-          currentIndex={previewImage.index}
-          onClose={(newIndex) => {
-            if (newIndex === null) {
-              setPreviewImage({ index: null, url: null });
-            } else {
-              setPreviewImage({
-                index: newIndex,
-                url: filteredCars[newIndex].image
-              });
-            }
-          }}
-        />
-      )}
+
     </div>
   );
 };

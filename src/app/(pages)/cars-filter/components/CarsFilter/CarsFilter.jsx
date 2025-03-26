@@ -20,22 +20,42 @@ const CarsFilter = () => {
         setSelectedBrand(searchParams.get('make') || '')
     }, [])
 
-    const handleSearch = () => {
-        const params = new URLSearchParams()
-        if (selectedBrand) params.set('make', selectedBrand)
-        if (currentModel) params.set('model', currentModel)
-        if (currentBody) params.set('body', currentBody) 
-        if (searchTitle) params.set('title', searchTitle)
+    const updateSearch = (updates) => {
+        const params = new URLSearchParams(searchParams.toString())
 
+        // Update parameters based on the provided updates object
+        Object.entries(updates).forEach(([key, value]) => {
+            if (value) params.set(key, value)
+            else params.delete(key)
+        })
+
+        params.set('page', '1')
         router.push(`/cars-filter?${params.toString()}`)
     }
 
-    // Reset model when brand changes
-    useEffect(() => {
-        if (selectedBrand) {
-            setCurrentModel('')
+    // Handle dropdown changes with immediate search
+    const handleSelectChange = (type, value) => {
+        switch (type) {
+            case 'brand':
+                setSelectedBrand(value)
+                setCurrentModel('')
+                updateSearch({ make: value, model: '' })
+                break
+            case 'model':
+                setCurrentModel(value)
+                updateSearch({ model: value })
+                break
+            case 'body':
+                setCurrentBody(value)
+                updateSearch({ body: value })
+                break
         }
-    }, [selectedBrand])
+    }
+
+    const handleTitleSearch = (value) => {
+        setSearchTitle(value)
+        updateSearch({ title: value.trim() })
+    }
 
     return (
         <div className={styles.container}>
@@ -47,15 +67,14 @@ const CarsFilter = () => {
                             placeholder='Search by name...'
                             className={styles.input}
                             value={searchTitle}
-                            onChange={(e) => setSearchTitle(e.target.value)}
-                            onKeyPress={(e) => e.key === 'Enter' && handleSearch()}
+                            onChange={(e) => handleTitleSearch(e.target.value)}
                         />
                     </div>
                     <div className={styles.selectWrapper}>
                         <select
                             className={styles.select}
                             value={selectedBrand || ''}
-                            onChange={(e) => setSelectedBrand(e.target.value)}
+                            onChange={(e) => handleSelectChange('brand', e.target.value)}
                         >
                             <option value="">Select Make</option>
                             {brands.map(brand => (
@@ -70,7 +89,7 @@ const CarsFilter = () => {
                         <select
                             className={styles.select}
                             value={currentModel}
-                            onChange={(e) => setCurrentModel(e.target.value)}
+                            onChange={(e) => handleSelectChange('model', e.target.value)}
                         >
                             <option value="">Select Model</option>
                             {models.map(model => (
@@ -85,7 +104,7 @@ const CarsFilter = () => {
                         <select
                             className={styles.select}
                             value={currentBody}
-                            onChange={(e) => setCurrentBody(e.target.value)}
+                            onChange={(e) => handleSelectChange('body', e.target.value)}
                         >
                             <option value="">Select Body</option>
                             {categories.map(category => (
@@ -97,10 +116,6 @@ const CarsFilter = () => {
                         <ChevronDown className={styles.selectIcon} />
                     </div>
                 </div>
-                <button className={styles.searchButton} onClick={handleSearch}>
-                    Search
-                    <Search className={styles.searchIcon} />
-                </button>
             </div>
         </div>
     )
