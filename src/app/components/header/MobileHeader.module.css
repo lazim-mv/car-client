@@ -12,7 +12,7 @@
         left: 0;
         background: var(--primary-light-color);
         z-index: 50;
-        border-bottom: var(--1px) solid var(--primary-light-color);
+        border-bottom: var(--2px) solid var(--secondary-color);
         box-shadow: 0 var(--4px) var(--6px) rgba(0, 0, 0, 0.1);
     }
 

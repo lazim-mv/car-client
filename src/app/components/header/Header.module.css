@@ -8,7 +8,7 @@
     padding: 0 var(--padding-horizontal);
     background: var(--primary-light-color);
     /* background: rgba(255, 255, 255, .1); */
-    border-bottom: var(--1px) solid var(--primary-light-color);
+    border-bottom: var(--2px) solid var(--secondary-color);
 }
 
 .logoContainer {
