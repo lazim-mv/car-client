@@ -38,7 +38,6 @@ async function getCars(searchParams) {
 
 export default async function CarsFilterPage({ searchParams }) {
     const { cars = [], pagination = { page: 1, totalPages: 1 } } = await getCars(searchParams)
-    console.log(cars, "cars count test")
     return (
         <div>
             <CarsFilter />

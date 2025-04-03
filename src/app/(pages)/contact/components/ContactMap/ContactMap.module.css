@@ -3,6 +3,7 @@
     border-radius: var(--14px);
     box-shadow: 0 var(--1px) var(--4px) rgba(0, 0, 0, 0.1);
     overflow: hidden;
+    height: 100%;
 }
 
 .mapContainer {

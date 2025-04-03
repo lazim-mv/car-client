@@ -2,7 +2,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: var(--button-padding);
+    padding: 0.93vw 1.65vw;
     gap: .5vw;
     border-radius: var(--14px);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -12,6 +12,7 @@
     background: transparent;
     border: 1px solid var(--secondary-color);
     cursor: pointer;
+    font-size: var(--font-16);
 }
 
 .buttonContainer:hover {
@@ -22,8 +23,13 @@
     border-color: transparent;
 }
 
+.buttonIcon {
+    width: var(--16px);
+}
+
 .buttonContainer:hover .buttonIcon {
     color: var(--text-light-color) !important;
     transform: scale(1.1) rotate(5deg);
     transition: all 0.3s ease;
+
 }

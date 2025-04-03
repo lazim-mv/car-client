@@ -3,7 +3,6 @@ import React, { useState } from 'react'
 import styles from "./Header.module.css"
 import { Search } from 'lucide-react'
 import { User2 } from 'lucide-react'
-import { ChevronDown } from 'lucide-react'
 import Button from '../buttons/Button'
 import Link from 'next/link'
 import Logo from '../Logo/Logo'
